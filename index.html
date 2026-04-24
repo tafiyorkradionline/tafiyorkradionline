@@ -29,7 +29,7 @@
         }
         header img { max-width: 250px; height: auto; }
 
-        /* SECCIÓN DE RADIO TOTALMENTE CONTROLADA */
+        /* SECCIÓN DE RADIO - DISEÑO EXCLUSIVO */
         .radio-section {
             background-color: #000;
             padding: 40px 20px;
@@ -37,22 +37,38 @@
             border-bottom: 1px solid #222;
         }
 
-        .player-box {
+        .player-card {
             background: var(--tarjeta);
             border: 2px solid var(--primario);
             border-radius: 20px;
             padding: 30px;
             display: inline-block;
             width: 100%;
-            max-width: 350px;
-            box-shadow: 0 10px 30px rgba(237, 28, 36, 0.2);
+            max-width: 380px;
+            box-shadow: 0 10px 40px rgba(237, 28, 36, 0.15);
         }
 
-        .status { color: var(--primario); font-weight: bold; margin-bottom: 15px; letter-spacing: 2px; }
+        .status-live { 
+            color: var(--primario); 
+            font-weight: bold; 
+            margin-bottom: 15px; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
         
-        /* Estilo del reproductor */
-        audio { width: 100%; filter: invert(1) hue-rotate(180deg); margin-top: 10px; }
+        .blink { animation: blinker 1.5s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
 
+        /* Estilo del reproductor de audio */
+        audio { 
+            width: 100%; 
+            height: 45px;
+            filter: invert(1) hue-rotate(180deg); 
+            margin-top: 15px; 
+        }
+
+        /* DISEÑO DE NOTICIAS */
         .main-grid {
             max-width: 1100px;
             margin: 40px auto;
@@ -63,10 +79,10 @@
         }
 
         .card { background: var(--tarjeta); padding: 25px; border-radius: 12px; margin-bottom: 25px; border: 1px solid #222; }
-        .card h2 { margin-top: 0; color: var(--blanco); }
-        .tag { color: var(--primario); font-weight: bold; font-size: 0.8rem; text-transform: uppercase; }
+        .card h2 { margin-top: 0; color: var(--blanco); font-size: 1.5rem; }
+        .tag { color: var(--primario); font-weight: bold; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 10px; display: block; }
 
-        .ws-button {
+        .btn-whatsapp {
             display: block;
             background: linear-gradient(45deg, #25d366, #128c7e);
             color: #fff;
@@ -75,12 +91,11 @@
             border-radius: 12px;
             text-align: center;
             font-weight: bold;
+            transition: 0.3s;
         }
+        .btn-whatsapp:hover { transform: scale(1.02); }
 
-        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
-        .blink { animation: blink 1.5s infinite; }
-
-        footer { text-align: center; padding: 40px; color: #444; font-size: 0.8rem; }
+        footer { text-align: center; padding: 40px; color: #444; font-size: 0.8rem; border-top: 1px solid #222; }
 
         @media (max-width: 850px) { .main-grid { grid-template-columns: 1fr; } }
     </style>
@@ -92,42 +107,48 @@
     </header>
 
     <section class="radio-section">
-        <div class="player-box">
-            <div class="status"><span class="blink">●</span> EN VIVO</div>
-            <h3 style="margin: 0 0 10px 0; color: #fff;">TAFÍ YORK RADIO</h3>
+        <div class="player-card">
+            <div class="status-live"><span class="blink">●</span> EN VIVO</div>
+            <h2 style="margin: 0 0 5px 0; color: #fff; font-size: 1.8rem;">TAFÍ YORK</h2>
+            <p style="margin: 0 0 20px 0; color: #666; font-size: 0.9rem;">La Voz de Tafí Viejo</p>
             
             <audio controls preload="none">
-                <source src="https://shoutcast.mixstream.net/stream/212.84.160.3:5905" type="audio/mpeg">
+                <source src="http://212.84.160.3:5905/;" type="audio/mpeg">
                 Tu navegador no soporta el audio.
             </audio>
             
-            <p style="font-size: 11px; color: #666; margin-top: 15px;">Tafí Viejo, Tucumán</p>
+            <p style="font-size: 11px; color: #444; margin-top: 20px;">Pulsa "Play" para conectar con el aire</p>
         </div>
     </section>
 
     <div class="main-grid">
         <main>
-            <h3 style="border-left: 4px solid var(--primario); padding-left: 10px; margin-bottom: 20px; color: #fff;">NOTICIAS</h3>
+            <h3 style="border-left: 4px solid var(--primario); padding-left: 15px; margin-bottom: 25px; color: #fff;">PORTAL DE NOTICIAS</h3>
+            
             <article class="card">
-                <span class="tag">CIUDAD</span>
-                <h2>Identidad Urbana</h2>
-                <p>Bienvenido al portal oficial de Tafí York. La combinación de nuestra música y la información local en un solo lugar.</p>
+                <span class="tag">COMUNIDAD</span>
+                <h2>Información de Tafí Viejo al Instante</h2>
+                <p>Bienvenido al nuevo portal multimedia. Aquí combinamos la mejor música con la información que realmente le importa al vecino de Tafí York.</p>
             </article>
+
             <article class="card">
-                <span class="tag">DEPORTES</span>
-                <h2>Cesto al Palo</h2>
-                <p>Seguí toda la actualidad del Cestoball con la cobertura más completa de la región.</p>
+                <span class="tag">ESTUDIO BOX 360</span>
+                <h2>Cesto al Palo: El Corazón del Deporte</h2>
+                <p>Toda la actualidad del Cestoball regional. Entrevistas, resultados y la pasión de nuestra ciudad en cada transmisión.</p>
             </article>
         </main>
 
         <aside>
-            <h3 style="color: #666; font-size: 1rem;">CONTACTO</h3>
-            <a href="https://wa.me/543814644322" class="ws-button" target="_blank">MANDAR WHATSAPP</a>
-            <div style="margin-top: 30px; padding: 30px; border: 1px dashed #333; text-align: center; color: #444; border-radius: 12px;">PUBLICIDAD</div>
+            <h3 style="color: #666; font-size: 1rem; text-transform: uppercase;">Contacto</h3>
+            <a href="https://wa.me/543814644322" class="btn-whatsapp" target="_blank">MANDAR UN WHATSAPP</a>
+            
+            <div style="margin-top: 30px; padding: 40px 20px; border: 2px dashed #333; text-align: center; color: #333; border-radius: 15px; font-weight: bold;">
+                ESPACIO PARA PUBLICIDAD
+            </div>
         </aside>
     </div>
 
-    <footer>© 2026 TAFÍ YORK | Box 360 Multimedia</footer>
+    <footer>© 2026 TAFÍ YORK | Box 360 Multimedia | Tafí Viejo, Tucumán</footer>
 
 </body>
 </html>
