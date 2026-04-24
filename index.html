@@ -3,47 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radio Tafí York | Aire Online</title>
+    <meta name="referrer" content="no-referrer">
+    <title>Tafí York Radio</title>
     <style>
-        :root { --rojo: #ed1c24; --negro: #000000; --blanco: #ffffff; }
-        body { margin: 0; background: var(--negro); color: var(--blanco); font-family: Arial, sans-serif; text-align: center; }
-        header { background: var(--blanco); padding: 15px; border-bottom: 4px solid var(--rojo); }
-        header img { max-width: 250px; }
-        .banner { 
-            height: 60vh; 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('para app 512x512.jpg');
+        body { margin: 0; background: #000; color: #fff; font-family: sans-serif; text-align: center; }
+        .header { background: #fff; padding: 10px; }
+        .logo-img { max-width: 90%; height: auto; max-height: 100px; }
+        .contenedor { 
+            padding: 50px 20px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('para app 512x512.jpg');
             background-size: cover; background-position: center;
-            display: flex; justify-content: center; align-items: center;
+            min-height: 50vh;
         }
-        .player { border: 2px solid var(--blanco); padding: 30px; background: rgba(0,0,0,0.8); width: 80%; max-width: 350px; }
-        .btn { 
-            background: var(--blanco); color: var(--negro); border: none; 
-            padding: 15px 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer; width: 100%;
-        }
-        .envivo { color: var(--rojo); font-weight: bold; margin-bottom: 15px; display: none; }
+        .reproductor-box { background: rgba(0,0,0,0.8); border: 2px solid #fff; padding: 20px; display: inline-block; width: 100%; max-width: 320px; }
+        audio { width: 100%; margin-top: 20px; filter: invert(1); }
+        .boton-ws { display: inline-block; margin-top: 30px; background: #25d366; color: #fff; text-decoration: none; padding: 15px 25px; border-radius: 50px; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<header><img src="para app 549x134.png" alt="Logo"></header>
-
-<div class="banner">
-    <div class="player">
-        <div id="aire" class="envivo">● EN VIVO</div>
-        <div style="margin-bottom:20px;">TAFÍ YORK VARIOS</div>
-        
-        <audio id="radio" controls style="width: 100%; filter: invert(1);">
-            <source src="http://212.84.160.3:5905/;" type="audio/mpeg">
-            Tu navegador no soporta el audio.
-        </audio>
-        
-        <p style="font-size: 0.8rem; margin-top: 15px;">Si no escuchás, dale Play al reproductor de arriba</p>
+    <div class="header">
+        <img src="para app 549x134.png" alt="TAFÍ YORK" class="logo-img">
     </div>
-</div>
 
-<footer>
-    <p>© 2026 Tafí York | Box 360</p>
-</footer>
+    <div class="contenedor">
+        <div class="reproductor-box">
+            <h2 style="margin:0;">AIRE EN VIVO</h2>
+            <p style="color: #ed1c24;">● TAFÍ YORK VARIOS</p>
+            
+            <audio controls>
+                <source src="http://212.84.160.3:5905/;" type="audio/mpeg">
+                Tu navegador es muy antiguo, actualizalo.
+            </audio>
+            
+            <p style="font-size: 12px; margin-top: 10px;">Si no escuchas, dale "Permitir" al candadito de arriba</p>
+        </div>
+    </div>
+
+    <a href="https://wa.me/543814644322" class="boton-ws">MANDAR WHATSAPP</a>
 
 </body>
 </html>
