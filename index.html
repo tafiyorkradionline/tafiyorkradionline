@@ -3,189 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tafí York | Noticias & Radio Online</title>
+    <title>Tafí York | Noticias & Radio</title>
     <style>
         :root {
-            --primario: #ed1c24; /* Rojo vibrante */
-            --fondo: #0a0a0a;    /* Negro profundo */
-            --tarjeta: #161616;  /* Gris muy oscuro */
-            --texto: #e0e0e0;
-            --blanco: #ffffff;
+            --primario: #ed1c24;
+            --oscuro: #0f0f0f;
+            --tarjeta: #1a1a1a;
+            --texto: #f0f0f0;
         }
-
-        * { box-sizing: border-box; }
 
         body { 
             margin: 0; 
-            font-family: 'Lexend', 'Segoe UI', sans-serif; 
-            background-color: var(--fondo); 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            background-color: var(--oscuro); 
             color: var(--texto);
-            line-height: 1.6;
         }
 
-        /* BARRA SUPERIOR DE ACCIÓN */
-        .top-nav {
-            background: var(--blanco);
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 4px solid var(--primario);
+        /* HEADER */
+        header {
+            background: #fff;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 5px solid var(--primario);
+        }
+        header img { max-width: 250px; }
+
+        /* SECCIÓN RADIO (REPRODUCTOR OFICIAL) */
+        .radio-section {
+            background: #000;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #333;
         }
 
-        .top-nav img { height: 45px; }
-
-        .btn-live {
-            background: var(--primario);
-            color: white;
+        .reproductor-frame {
+            width: 100%;
+            max-width: 400px;
+            height: 150px; /* Ajustado para que se vea solo el play */
             border: none;
-            padding: 10px 18px;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            animation: pulse 2s infinite;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        /* HERO / PORTADA */
-        .hero {
-            height: 40vh;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2), var(--fondo)), url('para app 512x512.jpg');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: flex-end;
-            padding: 40px 20px;
-        }
-
-        .hero-text h1 { font-size: 2.5rem; margin: 0; color: var(--blanco); text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
-
-        /* GRILLA DE CONTENIDO */
-        .main-grid {
+        /* GRILLA DE NOTICIAS */
+        .container {
             max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            margin: 30px auto;
+            padding: 0 20px;
             display: grid;
             grid-template-columns: 2fr 1fr;
-            gap: 30px;
+            gap: 25px;
         }
 
-        /* BLOQUES DE NOTICIAS */
-        .card {
+        .bloque-noticia {
             background: var(--tarjeta);
             border-radius: 12px;
             overflow: hidden;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             border: 1px solid #222;
-            transition: 0.3s;
         }
 
-        .card:hover { border-color: var(--primario); transform: translateY(-5px); }
+        .noticia-cuerpo { padding: 25px; }
+        .noticia-cuerpo h2 { margin: 0 0 10px 0; color: #fff; }
+        .noticia-cuerpo p { color: #aaa; line-height: 1.6; }
 
-        .card-content { padding: 25px; }
-        .card-tag { color: var(--primario); font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-        .card h2 { margin: 10px 0; color: var(--blanco); font-size: 1.6rem; }
-        .card p { color: #aaa; font-size: 0.95rem; }
+        .tag {
+            background: var(--primario);
+            color: #fff;
+            padding: 3px 10px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 3px;
+        }
 
-        /* SIDEBAR */
-        .sidebar-title { color: var(--blanco); border-left: 4px solid var(--primario); padding-left: 10px; margin-bottom: 20px; }
-        
-        .whatsapp-box {
-            background: linear-gradient(45deg, #25d366, #128c7e);
-            padding: 25px;
+        /* LATERAL */
+        .sidebar-item {
+            background: var(--tarjeta);
+            padding: 20px;
             border-radius: 12px;
+            margin-bottom: 20px;
             text-align: center;
-            color: white;
-            text-decoration: none;
-            display: block;
         }
 
-        /* FOOTER */
-        footer { text-align: center; padding: 60px 20px; border-top: 1px solid #222; color: #444; font-size: 0.8rem; }
+        .btn-ws {
+            display: block;
+            background: #25d366;
+            color: #fff;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
 
-        /* RESPONSIVE */
-        @media (max-width: 850px) {
-            .main-grid { grid-template-columns: 1fr; }
-            .hero-text h1 { font-size: 1.8rem; }
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <nav class="top-nav">
-        <img src="para app 549x134.png" alt="Tafí York">
-        <button class="btn-live" onclick="lanzarRadio()">
-            <span style="font-size: 1.2rem;">📻</span> ESCUCHAR EN VIVO
-        </button>
-    </nav>
+<header>
+    <img src="para app 549x134.png" alt="Tafí York">
+</header>
 
-    <section class="hero">
-        <div class="hero-text">
-            <div class="card-tag" style="color: white; background: var(--primario); display: inline-block; padding: 2px 10px; margin-bottom: 10px;">LO ÚLTIMO</div>
-            <h1>Información y Ritmo <br>desde el Corazón de Tafí.</h1>
-        </div>
-    </section>
+<section class="radio-section">
+    <div style="margin-bottom: 10px; font-weight: bold; color: var(--primario);">● ESCUCHÁ EN VIVO</div>
+    <iframe src="https://tafiyorkvarios.listen2myshow.com/" class="reproductor-frame"></iframe>
+</section>
 
-    <div class="main-grid">
-        <main>
-            <h3 class="sidebar-title">NOTICIAS DESTACADAS</h3>
-            
-            <article class="card">
-                <div class="card-content">
-                    <span class="card-tag">COMUNIDAD</span>
-                    <h2>Nuevos proyectos para Tafí Viejo en 2026</h2>
-                    <p>Exploramos las iniciativas que buscan transformar la infraestructura de nuestra ciudad en el próximo semestre...</p>
-                </div>
-            </article>
-
-            <article class="card">
-                <div class="card-content">
-                    <span class="card-tag">DEPORTES</span>
-                    <h2>Cesto al Palo: El gran encuentro del fin de semana</h2>
-                    <p>Toda la cobertura del torneo regional de Cestoball. Resultados, entrevistas y el color de las tribunas.</p>
-                </div>
-            </article>
-        </main>
-
-        <aside>
-            <h3 class="sidebar-title">CONTACTO DIRECTO</h3>
-            <a href="https://wa.me/543814644322" class="whatsapp-box" target="_blank">
-                <strong style="font-size: 1.2rem;">ENVÍA TU NOTICIA</strong>
-                <p style="margin: 5px 0 0 0; font-size: 0.8rem;">Vía WhatsApp al 381 464-4322</p>
-            </a>
-
-            <div style="margin-top: 30px; padding: 20px; background: #111; border-radius: 12px; border: 1px dashed #333;">
-                <h4 style="margin:0; color: #666;">PUBLICIDAD</h4>
-                <p style="font-size: 0.8rem; color: #444;">Tu comercio aquí. Contactanos.</p>
+<div class="container">
+    <main>
+        <h3 style="border-left: 4px solid var(--primario); padding-left: 10px; margin-bottom: 25px;">ÚLTIMAS NOTICIAS</h3>
+        
+        <article class="bloque-noticia">
+            <div class="noticia-cuerpo">
+                <span class="tag">CIUDAD</span>
+                <h2>Tafí Viejo: Impulsan nuevas obras en el centro</h2>
+                <p>Se anunciaron las mejoras para las principales avenidas, buscando potenciar el comercio local y la identidad tucumana...</p>
             </div>
-        </aside>
-    </div>
+        </article>
 
-    <footer>
-        © 2026 TAFÍ YORK | Identidad Urbana en el Aire
-    </footer>
+        <article class="bloque-noticia">
+            <div class="noticia-cuerpo">
+                <span class="tag">DEPORTES</span>
+                <h2>Cesto al Palo: Se viene el gran torneo</h2>
+                <p>Toda la pasión del Cestoball se vive en Tafí York. Preparate para la cobertura exclusiva de los partidos de este fin de semana.</p>
+            </div>
+        </article>
+    </main>
 
-    <script>
-        function lanzarRadio() {
-            // Abre el reproductor en una ventana pequeña e independiente
-            const url = 'reproductor.html';
-            const params = 'width=380,height=550,menubar=no,toolbar=no,location=no,status=no,scrollbars=no';
-            window.open(url, 'TafiYorkPlayer', params);
-        }
-    </script>
+    <aside>
+        <div class="sidebar-item">
+            <h4>CONTACTO</h4>
+            <p>¿Tenés una noticia o un pedido?</p>
+            <a href="https://wa.me/543814644322" class="btn-ws">ENVIAR WHATSAPP</a>
+        </div>
+        
+        <div class="sidebar-item" style="border: 1px dashed #444; background: transparent;">
+            <p style="color: #444;">ESPACIO PUBLICITARIO</p>
+        </div>
+    </aside>
+</div>
+
+<footer style="text-align: center; padding: 40px; color: #444; font-size: 0.8rem;">
+    © 2026 TAFÍ YORK | Box 360 Multimedia
+</footer>
 
 </body>
 </html>
