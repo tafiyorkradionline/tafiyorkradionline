@@ -1,103 +1,172 @@
-import { useState, useEffect, useRef } from "react"; // IMPORTANTE: faltaban estos
-import Navbar from "../components/radio/Navbar";
-import HeroSection from "../components/radio/HeroSection";
-import NowPlayingSection from "../components/radio/NowPlayingSection";
-import ProgramSchedule from "../components/radio/ProgramSchedule";
-import AboutSection from "../components/radio/AboutSection";
-import ContactSection from "../components/radio/ContactSection";
-import Footer from "../components/radio/Footer";
-import PlayerBar from "../components/radio/PlayerBar";
-import RequestDrawer from "../components/radio/RequestDrawer";
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tafí York | Noticias & Radio Online</title>
+    <style>
+        :root {
+            --primario: #ed1c24;
+            --oscuro: #0a0a0a;
+            --tarjeta: #161616;
+            --texto: #e0e0e0;
+            --blanco: #ffffff;
+        }
 
-// TU SEÑAL REAL DE TAFÍ YORK (Usando un proxy para evitar bloqueos HTTPS)
-const STREAM_URL = "https://shoutcast.mixstream.net/stream/212.84.160.3:5905";
+        * { box-sizing: border-box; }
 
-const CURRENT_SHOW = {
-  title: "Tafí York Varios",
-  dj: "Luis Alberto Díaz",
-  time: "24 HS Online",
-  genre: "Variado / Éxitos",
-  description:
-    "La voz de Tafí Viejo llegando a todo el mundo. Box 360 presenta una selección única de hits, noticias locales y toda la pasión del Cestoball con Cesto al Palo.",
-};
+        body { 
+            margin: 0; 
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background-color: var(--oscuro); 
+            color: var(--texto);
+            line-height: 1.6;
+        }
 
-export default function Home() {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(70);
-  const audioRef = useRef(null);
+        /* HEADER */
+        header {
+            background: var(--blanco);
+            padding: 15px;
+            text-align: center;
+            border-bottom: 5px solid var(--primario);
+        }
+        header img { max-width: 250px; height: auto; }
 
-  useEffect(() => {
-    // Inicializamos el objeto Audio
-    audioRef.current = new Audio(STREAM_URL);
-    audioRef.current.volume = volume / 100;
+        /* SECCIÓN DE RADIO (CENTRADO TOTAL) */
+        .radio-section {
+            background-color: #000;
+            padding: 30px 15px;
+            text-align: center;
+            border-bottom: 1px solid #222;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.src = "";
-      }
-    };
-  }, []);
+        .radio-container {
+            width: 100%;
+            max-width: 400px;
+            height: 165px; /* Altura fija para el contenedor */
+            background: #111;
+            border-radius: 15px;
+            border: 2px solid #333;
+            overflow: hidden; /* Esto hace el recorte */
+            position: relative;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
 
-  const togglePlay = () => {
-    if (!audioRef.current) return;
-    
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      // Forzamos la recarga para que el stream esté "al día" y no atrasado
-      audioRef.current.load(); 
-      audioRef.current.play().catch((error) => {
-        console.error("Error al reproducir:", error);
-      });
-    }
-    setIsPlaying(!isPlaying);
-  };
+        /* Ajuste específico para el reproductor de Listen2MyShow */
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            position: absolute;
+            top: -165px; /* Ajuste para que el Play quede al medio */
+        }
 
-  const handleVolumeChange = (val) => {
-    setVolume(val);
-    if (audioRef.current) {
-      audioRef.current.volume = val / 100;
-    }
-  };
+        /* CONTENIDO - NOTICIAS */
+        .main-content {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
 
-  return (
-    <div className="min-h-screen bg-background font-body text-white">
-      <Navbar />
+        .card {
+            background: var(--tarjeta);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid #222;
+        }
 
-      <HeroSection
-        isPlaying={isPlaying}
-        onTogglePlay={togglePlay}
-        heroImage="https://media.base44.com/images/public/69ebe996a228260788dc0b34/9cbd31c37_generated_6a9b0e9d.png"
-      />
+        .card h2 { margin-top: 0; color: var(--blanco); }
+        
+        .tag {
+            color: var(--primario);
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
 
-      <NowPlayingSection
-        isPlaying={isPlaying}
-        currentShow={CURRENT_SHOW}
-        mixingImage="https://media.base44.com/images/public/69ebe996a228260788dc0b34/5f7d72a28_generated_3630869c.png"
-      />
+        /* BOTÓN WHATSAPP */
+        .ws-button {
+            display: block;
+            background: linear-gradient(45deg, #25d366, #128c7e);
+            color: #fff;
+            text-decoration: none;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
 
-      <ProgramSchedule />
+        .blink { animation: pulse 1.5s infinite; color: var(--primario); }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
-      <AboutSection urbanImage="https://media.base44.com/images/public/69ebe996a228260788dc0b34/b7fbf2fb5_generated_48fa5c2a.png" />
+        footer { text-align: center; padding: 40px; color: #444; font-size: 0.8rem; }
 
-      <ContactSection />
+        @media (max-width: 850px) {
+            .main-content { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
 
-      <Footer />
+    <header>
+        <img src="para app 549x134.png" alt="Tafí York">
+    </header>
 
-      <PlayerBar
-        isPlaying={isPlaying}
-        onTogglePlay={togglePlay}
-        volume={volume}
-        onVolumeChange={handleVolumeChange}
-        currentShow={CURRENT_SHOW}
-        albumArt="https://media.base44.com/images/public/69ebe996a228260788dc0b34/de59473c3_generated_d7a7eceb.png"
-      />
+    <section class="radio-section">
+        <div style="margin-bottom: 15px; font-size: 0.9rem; letter-spacing: 1px;">
+            <span class="blink">●</span> AL AIRE AHORA
+        </div>
+        
+        <div class="radio-container">
+            <iframe src="https://tafiyorkvarios.listen2myshow.com/" scrolling="no"></iframe>
+        </div>
+        
+        <p style="font-size: 11px; color: #555; margin-top: 10px;">Si el audio no inicia, toca el botón central</p>
+    </section>
 
-      <RequestDrawer />
+    <div class="main-content">
+        <main>
+            <h3 style="border-left: 4px solid var(--primario); padding-left: 10px; margin-bottom: 20px;">PORTAL DE NOTICIAS</h3>
+            
+            <article class="card">
+                <span class="tag">CIUDAD</span>
+                <h2>Información desde Tafí Viejo</h2>
+                <p>Bienvenido al nuevo portal de Tafí York. Aquí encontrarás la combinación perfecta entre la mejor música y la información que importa a nuestra comunidad.</p>
+            </article>
 
-      {/* Espaciador para que la barra del reproductor no tape el contenido final */}
-      <div className="h-24" />
+            <article class="card">
+                <span class="tag">DEPORTES</span>
+                <h2>Cesto al Palo: Toda la pasión</h2>
+                <p>Seguí de cerca el torneo regional de Cestoball con la cobertura más completa de la provincia.</p>
+            </article>
+        </main>
+
+        <aside>
+            <h3 style="color: #666; font-size: 1rem;">CONTACTO DIRECTO</h3>
+            <a href="https://wa.me/543814644322" class="ws-button" target="_blank">
+                MANDAR WHATSAPP
+            </a>
+            
+            <div style="margin-top: 30px; padding: 30px; border: 1px dashed #333; text-align: center; color: #444; border-radius: 12px;">
+                PUBLICIDAD AQUÍ
+            </div>
+        </aside>
     </div>
-  );
-}
+
+    <footer>
+        © 2026 TAFÍ YORK | Box 360 Multimedia
+    </footer>
+
+</body>
+</html>
