@@ -3,161 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radio Tafí York | La Voz de la Ciudad</title>
+    <title>Radio Tafí York | Aire Online</title>
     <style>
-        :root {
-            --blanco: #ffffff;
-            --negro: #000000;
-            --rojo-rayo: #ed1c24;
+        :root { --rojo: #ed1c24; --negro: #000000; --blanco: #ffffff; }
+        body { margin: 0; background: var(--negro); color: var(--blanco); font-family: Arial, sans-serif; text-align: center; }
+        header { background: var(--blanco); padding: 15px; border-bottom: 4px solid var(--rojo); }
+        header img { max-width: 250px; }
+        .banner { 
+            height: 60vh; 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('para app 512x512.jpg');
+            background-size: cover; background-position: center;
+            display: flex; justify-content: center; align-items: center;
         }
-
-        body { 
-            margin: 0; 
-            font-family: 'Arial', sans-serif; 
-            background-color: var(--negro); 
-            color: var(--blanco);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            align-items: center;
+        .player { border: 2px solid var(--blanco); padding: 30px; background: rgba(0,0,0,0.8); width: 80%; max-width: 350px; }
+        .btn { 
+            background: var(--blanco); color: var(--negro); border: none; 
+            padding: 15px 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer; width: 100%;
         }
-
-        header {
-            background-color: var(--blanco);
-            width: 100%;
-            padding: 15px 0;
-            text-align: center;
-            border-bottom: 4px solid var(--rojo-rayo);
-        }
-
-        header img {
-            max-width: 250px;
-            height: auto;
-        }
-
-        .main-banner {
-            width: 100%;
-            height: 60vh;
-            background-image: url('para app 512x512.jpg'); 
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .main-banner::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.6);
-        }
-
-        .player-card {
-            background-color: rgba(0, 0, 0, 0.8);
-            border: 2px solid var(--blanco);
-            padding: 30px;
-            text-align: center;
-            width: 80%;
-            max-width: 400px;
-            z-index: 10;
-        }
-
-        .status-text {
-            font-weight: bold;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            color: #fff;
-        }
-
-        .btn-play {
-            background-color: var(--blanco);
-            color: var(--negro);
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            text-transform: uppercase;
-            width: 100%;
-        }
-
-        .whatsapp-section {
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .btn-wsapp {
-            color: var(--blanco);
-            text-decoration: none;
-            font-weight: bold;
-            border: 1px solid #333;
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
-
-        footer {
-            margin-top: auto;
-            padding: 20px;
-            font-size: 0.7rem;
-            color: #666;
-        }
+        .envivo { color: var(--rojo); font-weight: bold; margin-bottom: 15px; display: none; }
     </style>
 </head>
 <body>
 
-<header>
-    <img src="para app 549x134.png" alt="Tafí York Logo">
-</header>
+<header><img src="para app 549x134.png" alt="Logo"></header>
 
-<div class="main-banner">
-    <div class="player-card">
-        <div class="status-text" id="status">AIRE: TAFÍ YORK VARIOS</div>
+<div class="banner">
+    <div class="player">
+        <div id="aire" class="envivo">● EN VIVO</div>
+        <div style="margin-bottom:20px;">TAFÍ YORK VARIOS</div>
         
-        <audio id="stream" preload="none">
+        <audio id="radio" controls style="width: 100%; filter: invert(1);">
             <source src="http://212.84.160.3:5905/;" type="audio/mpeg">
+            Tu navegador no soporta el audio.
         </audio>
         
-        <button class="btn-play" id="playBtn" onclick="controlarRadio()">ESCUCHAR EN VIVO</button>
+        <p style="font-size: 0.8rem; margin-top: 15px;">Si no escuchás, dale Play al reproductor de arriba</p>
     </div>
 </div>
 
-<div class="whatsapp-section">
-    <a href="https://wa.me/543814644322" class="btn-wsapp" target="_blank">
-        CONTACTO WHATSAPP
-    </a>
-</div>
-
 <footer>
-    © 2026 TAFÍ YORK RADIO | Una producción de Box 360
+    <p>© 2026 Tafí York | Box 360</p>
 </footer>
-
-<script>
-    const audio = document.getElementById('stream');
-    const btn = document.getElementById('playBtn');
-    const status = document.getElementById('status');
-
-    function controlarRadio() {
-        if (audio.paused) {
-            // Recargamos el audio para evitar que se quede "trabado"
-            audio.load();
-            audio.play().then(() => {
-                btn.innerHTML = "PAUSAR";
-                status.innerHTML = "● EN VIVO";
-                status.style.color = "#ed1c24";
-            }).catch(error => {
-                console.log("Error de reproducción:", error);
-                alert("Para escuchar, hacé clic de nuevo. Algunos navegadores bloquean el audio automático.");
-            });
-        } else {
-            audio.pause();
-            btn.innerHTML = "ESCUCHAR EN VIVO";
-            status.innerHTML = "AIRE: TAFÍ YORK VARIOS";
-            status.style.color = "#fff";
-        }
-    }
-</script>
 
 </body>
 </html>
