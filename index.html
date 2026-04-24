@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Tafí York | La Voz de la Ciudad</title>
+    <style>
+        /* Estética Urbana Tafí York */
+        :root {
+            --blanco: #ffffff;
+            --negro: #121212;
+            --gris: #333333;
+        }
+
+        body { 
+            margin: 0; 
+            font-family: 'Impact', 'Arial Black', sans-serif; 
+            background-color: var(--negro); 
+            color: var(--blanco);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            width: 100%;
+            border-bottom: 2px solid var(--blanco);
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin: 0;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            line-height: 0.9;
+        }
+
+        header span {
+            font-size: 1.2rem;
+            background: var(--blanco);
+            color: var(--negro);
+            padding: 2px 10px;
+            letter-spacing: 5px;
+        }
+
+        .main-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        /* Reproductor Personalizado */
+        .player-card {
+            background: #1a1a1a;
+            border: 3px solid var(--blanco);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 0 30px rgba(255,255,255,0.1);
+        }
+
+        .status {
+            font-family: 'Arial', sans-serif;
+            color: #888;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .btn-play {
+            background: var(--blanco);
+            color: var(--negro);
+            border: none;
+            padding: 20px 60px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn-play:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255,255,255,0.3);
+        }
+
+        .whatsapp-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .btn-wsapp {
+            background: #25d366;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        footer {
+            padding: 30px;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.8rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>TAFÍ<br>YORK</h1>
+    <span>RADIO ONLINE</span>
+</header>
+
+<div class="main-container">
+    <div class="player-card">
+        <div class="status" id="status-text">AIRE: TAFÍ YORK VARIOS</div>
+        
+        <audio id="radio-audio" src="http://212.84.160.3:5905/;"></audio>
+        
+        <button class="btn-play" id="play-btn" onclick="togglePlay()">ESCUCHAR AHORA</button>
+    </div>
+
+    <div class="whatsapp-section">
+        <p>Pedí tu música o mandá tu saludo:</p>
+        <a href="https://wa.me/543814644322?text=Hola+Tafí+York!+Quiero+pedir+un+tema" class="btn-wsapp" target="_blank">
+            MANDAR WHATSAPP
+        </a>
+    </div>
+</div>
+
+<footer>
+    © 2026 TAFÍ YORK RADIO - Tafí Viejo, Tucumán <br>
+    Una producción de Box 360
+</footer>
+
+<script>
+    const audio = document.getElementById('radio-audio');
+    const btn = document.getElementById('play-btn');
+    const status = document.getElementById('status-text');
+
+    function togglePlay() {
+        if (audio.paused) {
+            audio.play();
+            btn.innerHTML = "PAUSAR";
+            status.innerHTML = "● EN VIVO";
+            status.style.color = "#ff0000";
+        } else {
+            audio.pause();
+            btn.innerHTML = "ESCUCHAR AHORA";
+            status.innerHTML = "AIRE: TAFÍ YORK VARIOS";
+            status.style.color = "#888";
+        }
+    }
+</script>
+
+</body>
+</html>
