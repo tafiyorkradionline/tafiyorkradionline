@@ -3,57 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="referrer" content="no-referrer">
-    <title>Radio Tafí York | Oficial</title>
+    <title>Radio Tafí York</title>
     <style>
-        body { margin: 0; background: #000; color: #fff; font-family: 'Arial', sans-serif; text-align: center; }
-        .header { background: #fff; padding: 20px; border-bottom: 5px solid #ed1c24; }
-        .logo-img { max-width: 280px; height: auto; }
-        .hero { 
-            padding: 60px 20px; 
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('para app 512x512.jpg');
+        body { margin: 0; background: #000; color: #fff; font-family: sans-serif; text-align: center; }
+        .logo-box { background: #fff; padding: 15px; }
+        .logo-img { max-width: 250px; }
+        .capa { 
+            padding: 50px 20px; 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('para app 512x512.jpg');
             background-size: cover; background-position: center;
-            min-height: 400px;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            min-height: 300px;
         }
-        .reproductor-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); padding: 30px; border-radius: 15px; width: 100%; max-width: 350px; backdrop-filter: blur(10px); }
-        .envivo-tag { color: #ed1c24; font-weight: bold; font-size: 0.9rem; margin-bottom: 10px; }
-        audio { width: 100%; margin-top: 20px; filter: invert(1) hue-rotate(180deg); }
-        .whatsapp-btn { display: inline-block; margin-top: 30px; background: #25d366; color: #fff; text-decoration: none; padding: 15px 30px; border-radius: 50px; font-weight: bold; transition: 0.3s; }
-        .whatsapp-btn:hover { background: #128c7e; transform: scale(1.05); }
-        .alerta-seguridad { font-size: 11px; color: #aaa; margin-top: 20px; line-height: 1.4; padding: 0 10px; }
+        .card { background: rgba(0,0,0,0.8); border: 2px solid #fff; padding: 20px; display: inline-block; }
+        /* Reproductor de respaldo */
+        iframe { border: none; width: 100%; height: 100px; margin-top: 20px; }
     </style>
 </head>
 <body>
 
-    <header>
-        <img src="para app 549x134.png" alt="TAFÍ YORK RADIO" class="logo-img">
-    </header>
+    <div class="logo-box">
+        <img src="para app 549x134.png" alt="TAFÍ YORK" class="logo-img">
+    </div>
 
-    <div class="hero">
-        <div class="reproductor-card">
-            <div class="envivo-tag">● EN VIVO AHORA</div>
-            <h2 style="margin: 0 0 15px 0; font-size: 1.6rem;">TAFÍ YORK</h2>
+    <div class="capa">
+        <div class="card">
+            <h2 style="margin:0;">EN VIVO</h2>
+            <p style="color:red;">● TAFÍ YORK VARIOS</p>
             
-            <audio id="player" controls>
-                <source src="http://212.84.160.3:5905/;" type="audio/mpeg">
-                Tu navegador no soporta streaming.
-            </audio>
-
-            <div class="alerta-seguridad">
-                ⚠️ <b>Si no escuchás el audio:</b><br>
-                Hacé clic en el candado arriba a la izquierda de la dirección, ve a <b>"Configuración del sitio"</b> y cambia "Contenido no seguro" a <b>"Permitir"</b>. Luego reinicia la página.
-            </div>
+            <iframe src="https://shoutcast.mixstream.net/js/212.84.160.3:5905"></iframe>
+            
         </div>
     </div>
 
-    <a href="https://wa.me/543814644322" class="whatsapp-btn">
-        MANDAR UN WHATSAPP
+    <br>
+    <a href="https://wa.me/543814644322" style="color:#25d366; text-decoration:none; font-weight:bold; font-size:20px;">
+        MANDAR WHATSAPP
     </a>
-
-    <footer style="margin-top: 50px; color: #444; font-size: 12px; padding-bottom: 20px;">
-        © 2026 Tafí York Radio | Desarrollado por Box 360
-    </footer>
 
 </body>
 </html>
