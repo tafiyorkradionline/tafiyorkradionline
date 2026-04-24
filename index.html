@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="referrer" content="no-referrer">
     <title>Tafí York | Noticias & Radio Online</title>
     <style>
         :root {
-            --primario: #ed1c24; /* Rojo Tafí York */
-            --oscuro: #0a0a0a;    /* Fondo Negro */
-            --tarjeta: #161616;  /* Gris de bloques */
+            --primario: #ed1c24;
+            --oscuro: #0a0a0a;
+            --tarjeta: #161616;
             --texto: #e0e0e0;
             --blanco: #ffffff;
         }
@@ -18,13 +17,14 @@
 
         body { 
             margin: 0; 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif; 
             background-color: var(--oscuro); 
             color: var(--texto);
             line-height: 1.6;
         }
 
-        /* BARRA SUPERIOR */
+        /* HEADER */
         header {
             background: var(--blanco);
             padding: 15px;
@@ -33,123 +33,87 @@
         }
         header img { max-width: 250px; height: auto; }
 
-        /* SECCIÓN DE RADIO CENTRADA */
+        /* SECCIÓN DE RADIO (CENTRADO TOTAL) */
         .radio-section {
             background-color: #000;
-            padding: 40px 10px;
+            padding: 30px 15px;
             text-align: center;
             border-bottom: 1px solid #222;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .radio-container {
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
             width: 100%;
-        }
-
-        /* El recorte para que no se vea el blanco del iframe */
-        .reproductor-wrap {
-            background: #111; 
-            padding: 0; 
-            border-radius: 15px; 
-            border: 2px solid #333; 
-            width: 100%; 
-            max-width: 400px; 
-            height: 160px; 
-            overflow: hidden; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center;
+            max-width: 400px;
+            height: 165px; /* Altura fija para el contenedor */
+            background: #111;
+            border-radius: 15px;
+            border: 2px solid #333;
+            overflow: hidden; /* Esto hace el recorte */
+            position: relative;
+            display: flex;
+            justify-content: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
+        /* Ajuste específico para el reproductor de Listen2MyShow */
         iframe {
-            width: 100%; 
-            height: 500px; 
-            border: none; 
-            margin-top: -165px; /* Ajuste para centrar el botón de play de Listen2MyShow */
+            width: 100%;
+            height: 600px;
+            border: none;
+            position: absolute;
+            top: -165px; /* Ajuste para que el Play quede al medio */
         }
 
-        /* GRILLA DE CONTENIDO */
-        .main-grid {
+        /* CONTENIDO - NOTICIAS */
+        .main-content {
             max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            margin: 40px auto;
+            padding: 0 20px;
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 30px;
         }
 
-        /* BLOQUES DE NOTICIAS */
         .card {
             background: var(--tarjeta);
             border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 30px;
+            padding: 25px;
+            margin-bottom: 25px;
             border: 1px solid #222;
-            transition: 0.3s;
         }
 
-        .card:hover { border-color: var(--primario); }
-
-        .card-content { padding: 25px; }
-        .card-tag { 
-            color: var(--primario); 
-            font-size: 0.75rem; 
-            font-weight: bold; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-            border: 1px solid var(--primario);
-            padding: 2px 8px;
-            border-radius: 3px;
+        .card h2 { margin-top: 0; color: var(--blanco); }
+        
+        .tag {
+            color: var(--primario);
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-transform: uppercase;
         }
-        .card h2 { margin: 15px 0 10px 0; color: var(--blanco); font-size: 1.6rem; }
-        .card p { color: #aaa; font-size: 0.95rem; }
 
-        /* SIDEBAR */
-        .sidebar-title { 
-            color: var(--blanco); 
-            border-left: 4px solid var(--primario); 
-            padding-left: 10px; 
-            margin-bottom: 20px; 
+        /* BOTÓN WHATSAPP */
+        .ws-button {
+            display: block;
+            background: linear-gradient(45deg, #25d366, #128c7e);
+            color: #fff;
+            text-decoration: none;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: bold;
             font-size: 1.1rem;
         }
-        
-        .whatsapp-box {
-            background: linear-gradient(45deg, #25d366, #128c7e);
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-            color: white;
-            text-decoration: none;
-            display: block;
-            font-weight: bold;
-        }
 
-        .publicidad {
-            margin-top: 30px;
-            padding: 40px 20px;
-            border: 2px dashed #333;
-            border-radius: 12px;
-            text-align: center;
-            color: #444;
-        }
+        .blink { animation: pulse 1.5s infinite; color: var(--primario); }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
-        /* ANIMACIÓN AIRE */
-        .blink { animation: pulse 1.5s infinite; color: var(--primario); font-weight: bold; }
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.3; }
-            100% { opacity: 1; }
-        }
+        footer { text-align: center; padding: 40px; color: #444; font-size: 0.8rem; }
 
-        footer { text-align: center; padding: 60px 20px; border-top: 1px solid #222; color: #444; font-size: 0.8rem; }
-
-        /* RESPONSIVE */
         @media (max-width: 850px) {
-            .main-grid { grid-template-columns: 1fr; }
-            header img { max-width: 200px; }
+            .main-content { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -160,18 +124,49 @@
     </header>
 
     <section class="radio-section">
-        <div style="margin-bottom: 20px; letter-spacing: 2px; font-size: 0.9rem;">
-            <span class="blink">●</span> AL AIRE: TAFÍ YORK RADIO
+        <div style="margin-bottom: 15px; font-size: 0.9rem; letter-spacing: 1px;">
+            <span class="blink">●</span> AL AIRE AHORA
         </div>
         
         <div class="radio-container">
-            <div class="reproductor-wrap">
-                <iframe 
-                    src="https://tafiyorkvarios.listen2myshow.com/" 
-                    scrolling="no">
-                </iframe>
-            </div>
+            <iframe src="https://tafiyorkvarios.listen2myshow.com/" scrolling="no"></iframe>
         </div>
         
-        <p style="font-size: 11px; color: #555; margin-top: 15px;">
-            Si el reproductor no
+        <p style="font-size: 11px; color: #555; margin-top: 10px;">Si el audio no inicia, toca el botón central</p>
+    </section>
+
+    <div class="main-content">
+        <main>
+            <h3 style="border-left: 4px solid var(--primario); padding-left: 10px; margin-bottom: 20px;">PORTAL DE NOTICIAS</h3>
+            
+            <article class="card">
+                <span class="tag">CIUDAD</span>
+                <h2>Información desde Tafí Viejo</h2>
+                <p>Bienvenido al nuevo portal de Tafí York. Aquí encontrarás la combinación perfecta entre la mejor música y la información que importa a nuestra comunidad.</p>
+            </article>
+
+            <article class="card">
+                <span class="tag">DEPORTES</span>
+                <h2>Cesto al Palo: Toda la pasión</h2>
+                <p>Seguí de cerca el torneo regional de Cestoball con la cobertura más completa de la provincia.</p>
+            </article>
+        </main>
+
+        <aside>
+            <h3 style="color: #666; font-size: 1rem;">CONTACTO DIRECTO</h3>
+            <a href="https://wa.me/543814644322" class="ws-button" target="_blank">
+                MANDAR WHATSAPP
+            </a>
+            
+            <div style="margin-top: 30px; padding: 30px; border: 1px dashed #333; text-align: center; color: #444; border-radius: 12px;">
+                PUBLICIDAD AQUÍ
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        © 2026 TAFÍ YORK | Box 360 Multimedia
+    </footer>
+
+</body>
+</html>
