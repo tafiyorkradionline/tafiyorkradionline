@@ -3,47 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radio Tafí York | Aire Online</title>
+    <title>BOX360TUC - Multimedia & Streaming</title>
     <style>
-        :root { --rojo: #ed1c24; --negro: #000000; --blanco: #ffffff; }
-        body { margin: 0; background: var(--negro); color: var(--blanco); font-family: Arial, sans-serif; text-align: center; }
-        header { background: var(--blanco); padding: 15px; border-bottom: 4px solid var(--rojo); }
-        header img { max-width: 250px; }
-        .banner { 
-            height: 60vh; 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('para app 512x512.jpg');
-            background-size: cover; background-position: center;
-            display: flex; justify-content: center; align-items: center;
+        /* --- ESTILOS GENERALES (Estética Premium Dark) --- */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0b0b0b;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
         }
-        .player { border: 2px solid var(--blanco); padding: 30px; background: rgba(0,0,0,0.8); width: 80%; max-width: 350px; }
-        .btn { 
-            background: var(--blanco); color: var(--negro); border: none; 
-            padding: 15px 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer; width: 100%;
+
+        a { text-decoration: none; color: inherit; }
+
+        /* --- CABECERA / NAV --- */
+        header {
+            background-color: #111111;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #00ffcc;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
         }
-        .envivo { color: var(--rojo); font-weight: bold; margin-bottom: 15px; display: none; }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ffcc;
+        }
+
+        .logo span { color: #ff0055; text-shadow: 0 0 10px #ff0055; }
+
+        nav a {
+            color: #aaa;
+            margin-left: 20px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        nav a:hover { color: #00ffcc; }
+
+        /* --- SECCIÓN STREAMING EN VIVO (Héroe de la página) --- */
+        .seccion-stream {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .reproductor-box {
+            background: #161616;
+            border: 3px solid #ff0055;
+            border-radius: 15px;
+            padding: 40px 20px;
+            box-shadow: 0 0 25px rgba(255, 0, 85, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reproductor-box::before {
+            content: "🔴 EN VIVO";
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            background: #ff0055;
+            color: white;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 5px;
+            animation: parpadeo 1.5s infinite;
+        }
+
+        .info-programa { margin-bottom: 25px; }
+        .info-programa h2 { font-size: 2rem; margin: 5px 0; color: #fff; }
+        .info-programa p { color: #00ffcc; font-size: 1.1rem; margin: 0; }
+
+        /* Botón de Play de Streaming (Adaptable a tu IP de Radio o Video) */
+        .btn-play {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #00ffcc;
+            color: #111;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 0 15px #00ffcc;
+            transition: 0.3s;
+            border: none;
+        }
+        .btn-play:hover { transform: scale(1.1); background: #ff0055; color: #fff; box-shadow: 0 0 15px #ff0055; }
+
+        /* --- SECCIÓN MAGAZINE (Grilla estilo Revista Multimedia) --- */
+        .seccion-magazine {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .seccion-magazine h3 {
+            font-size: 1.8rem;
+            border-left: 5px solid #00ffcc;
+            padding-left: 10px;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .grid-magazine {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .tarjeta-nota {
+            background: #161616;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #222;
+            transition: 0.3s;
+        }
+
+        .tarjeta-nota:hover {
+            transform: translateY(-5px);
+            border-color: #00ffcc;
+            box-shadow: 0 5px 15px rgba(0, 255, 204, 0.1);
+        }
+
+        .tarjeta-img {
+            width: 100%;
+            height: 180px;
+            background: #252525; /* Espacio para imagen de portada */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+            font-weight: bold;
+        }
+
+        .tarjeta-cuerpo { padding: 20px; text-align: left; }
+        .tarjeta-cuerpo .categoria { color: #ff0055; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
+        .tarjeta-cuerpo h4 { font-size: 1.3rem; margin: 10px 0; color: #fff; line-height: 1.4; }
+        .tarjeta-cuerpo p { color: #aaa; font-size: 0.9rem; line-height: 1.5; margin: 0; }
+
+        /* --- PIE DE PÁGINA --- */
+        footer {
+            background: #111;
+            padding: 30px 20px;
+            margin-top: 60px;
+            border-top: 1px solid #222;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* --- ANIMACIONES --- */
+        @keyframes parpadeo {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
     </style>
 </head>
 <body>
 
-<header><img src="para app 549x134.png" alt="Logo"></header>
+    <header>
+        <div class="logo">BOX360<span>TUC</span></div>
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#">Programación</a>
+            <a href="#">Magazine</a>
+            <a href="#">Contacto</a>
+        </nav>
+    </header>
 
-<div class="banner">
-    <div class="player">
-        <div id="aire" class="envivo">● EN VIVO</div>
-        <div style="margin-bottom:20px;">TAFÍ YORK VARIOS</div>
+    <main class="seccion-stream">
+        <div class="reproductor-box">
+            <div class="info-programa">
+                <p>ESTÁS ESCUCHANDO</p>
+                <h2>Transmisión Oficial En Vivo</h2>
+            </div>
+            
+            <button class="btn-play" id="playBtn" onclick="controlarStream()">▶</button>
+            
+            <audio id="audioStream" src="TU_URL_DE_STREAMING_AQUÍ"></audio>
+        </div>
+    </main>
+
+    <section class="seccion-magazine">
+        <h3>Últimas Novedades</h3>
         
-        <audio id="radio" controls style="width: 100%; filter: invert(1);">
-            <source src="http://212.84.160.3:5905/;" type="audio/mpeg">
-            Tu navegador no soporta el audio.
-        </audio>
-        
-        <p style="font-size: 0.8rem; margin-top: 15px;">Si no escuchás, dale Play al reproductor de arriba</p>
-    </div>
-</div>
+        <div class="grid-magazine">
+            <article class="tarjeta-nota">
+                <div class="tarjeta-img">📸 BOX360TUC COVER</div>
+                <div class="tarjeta-cuerpo">
+                    <span class="categoria">Streaming</span>
+                    <h4>Lunes de Cesto al Palo: Todo el análisis del Cestoball</h4>
+                    <p>Reviví el programa completo con las mejores jugadas, entrevistas exclusivas y la cobertura técnica del torneo regional.</p>
+                </div>
+            </article>
 
-<footer>
-    <p>© 2026 Tafí York | Box 360</p>
-</footer>
+            <article class="tarjeta-nota">
+                <div class="tarjeta-img">✨ RELAX DESIGN</div>
+                <div class="tarjeta-cuerpo">
+                    <span class="categoria">Bienestar</span>
+                    <h4>Tu Sitio Relax incorpora equipamiento de última generación</h4>
+                    <p>Conocé los nuevos tratamientos estéticos con tecnología Body Up y camillas Ceragem ya disponibles en Tafí Viejo.</p>
+                </div>
+            </article>
 
+            <article class="tarjeta-nota">
+                <div class="tarjeta-img">📻 AUTOMATIZACIÓN</div>
+                <div class="tarjeta-cuerpo">
+                    <span class="categoria">Radio</span>
+                    <h4>Nueva programación musical y spots publicitarios</h4>
+                    <p>Implementamos un sistema de rotación inteligente mediante RadioBOSS para garantizar la mejor música sin baches comerciales.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 BOX360TUC & TU SITIO RELAX. Todos los derechos reservados.</p>
+        <p>Desarrollado con pasión en Tafí Viejo, Tucumán, Argentina.</p>
+    </footer>
+
+    <script>
+        // Script básico para controlar el encendido/apagado del stream de audio
+        function controlarStream() {
+            const audio = document.getElementById('audioStream');
+            const btn = document.getElementById('playBtn');
+            
+            if (audio.paused) {
+                // audio.play(); // Descomentar cuando pongas tu URL real
+                btn.innerText = "⏸";
+                btn.style.background = "#ff0055";
+                btn.style.boxShadow = "0 0 15px #ff0055";
+            } else {
+                audio.pause();
+                btn.innerText = "▶";
+                btn.style.background = "#00ffcc";
+                btn.style.boxShadow = "0 0 15px #00ffcc";
+            }
+        }
+    </script>
 </body>
 </html>
