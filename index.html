@@ -14,7 +14,7 @@
             padding: 0;
         }
 
-        a { text-decoration: none; color: inherit; }
+        a { text-decoration: none; color: inherit; transition: 0.2s; }
 
         /* --- CABECERA / NAV --- */
         header {
@@ -37,16 +37,34 @@
 
         .logo span { color: #ff0055; text-shadow: 0 0 10px #ff0055; }
 
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
         nav a {
             color: #aaa;
             margin-left: 20px;
             font-weight: bold;
-            transition: 0.2s;
         }
 
         nav a:hover { color: #00ffcc; }
+        
+        .nav-whatsapp {
+            color: #25d366 !important;
+            border: 1px solid #25d366;
+            padding: 5px 12px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(37, 211, 102, 0.2);
+        }
+        .nav-whatsapp:hover {
+            background: #25d366;
+            color: #111 !important;
+            box-shadow: 0 0 15px #25d366;
+        }
 
-        /* --- SECCIÓN STREAMING EN VIVO (Héroe de la página) --- */
+        /* --- SECCIÓN STREAMING EN VIVO --- */
         .seccion-stream {
             max-width: 1000px;
             margin: 30px auto;
@@ -82,7 +100,7 @@
         .info-programa h2 { font-size: 2.2rem; margin: 5px 0; color: #fff; }
         .info-programa p { color: #00ffcc; font-size: 1.1rem; margin: 0; letter-spacing: 2px; }
 
-        /* Botón de Play de Streaming (Adaptable a IP de Radio o Video) */
+        /* Botón de Play */
         .btn-play {
             display: inline-flex;
             align-items: center;
@@ -97,7 +115,7 @@
             box-shadow: 0 0 15px #00ffcc;
             transition: 0.3s;
             border: none;
-            padding-left: 5px; /* Ajuste para centrar visualmente el triángulo de Play */
+            padding-left: 5px;
         }
         .btn-play:hover { 
             transform: scale(1.1); 
@@ -158,10 +176,38 @@
         .tarjeta-cuerpo h4 { font-size: 1.3rem; margin: 10px 0; color: #fff; line-height: 1.4; }
         .tarjeta-cuerpo p { color: #aaa; font-size: 0.9rem; line-height: 1.5; margin: 0; }
 
+        /* --- BLOQUE DE REDES Y CONTACTO --- */
+        .bloque-redes {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-red {
+            background: #1c1c1c;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border: 1px solid #333;
+            color: #ccc;
+        }
+        .btn-red:hover {
+            color: #fff;
+            border-color: #00ffcc;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+        }
+
+        .btn-red.tiktok:hover { border-color: #ff0055; box-shadow: 0 0 10px rgba(255, 0, 85, 0.3); }
+        .btn-red.instagram:hover { border-color: #e1306c; box-shadow: 0 0 10px rgba(225, 48, 108, 0.3); }
+        .btn-red.facebook:hover { border-color: #1877f2; box-shadow: 0 0 10px rgba(24, 119, 242, 0.3); }
+
         /* --- PIE DE PÁGINA --- */
         footer {
             background: #111;
-            padding: 30px 20px;
+            padding: 40px 20px;
             margin-top: 60px;
             border-top: 1px solid #222;
             font-size: 0.9rem;
@@ -184,8 +230,7 @@
         <nav>
             <a href="#">Inicio</a>
             <a href="#">Transmisiones</a>
-            <a href="#">Programas</a>
-            <a href="#">Contacto</a>
+            <a href="https://wa.me/5493813338325" target="_blank" class="nav-whatsapp">📞 WhatsApp</a>
         </nav>
     </header>
 
@@ -198,15 +243,24 @@
             
             <button class="btn-play" id="playBtn" onclick="controlarStream()">▶</button>
             
-            <!-- Colocá tu IP o URL de streaming de audio/video en el src -->
+            <!-- Colocá tu IP o URL de streaming aquí -->
             <audio id="audioStream" src="TU_URL_DE_STREAMING_AQUÍ"></audio>
         </div>
     </main>
 
     <section class="seccion-magazine">
-        <h3>Contenido Destacado</h3>
+        <h3>Contenido & Conectividad</h3>
         
         <div class="grid-magazine">
+            <article class="tarjeta-nota">
+                <div class="tarjeta-img">📱 COMUNIDAD</div>
+                <div class="tarjeta-cuerpo">
+                    <span class="categoria">Contacto Directo</span>
+                    <h4>¡Comunicate con la Radio!</h4>
+                    <p>Mandanos tu mensaje, audio o pedí tu tema preferido directamente a nuestro WhatsApp oficial: <strong>381 333-8325</strong>.</p>
+                </div>
+            </article>
+
             <article class="tarjeta-nota">
                 <div class="tarjeta-img">📺 EN VIVO</div>
                 <div class="tarjeta-cuerpo">
@@ -217,26 +271,23 @@
             </article>
 
             <article class="tarjeta-nota">
-                <div class="tarjeta-img">🎙️ PRODUCCIÓN</div>
+                <div class="tarjeta-img">🎙️ MULTIMEDIA</div>
                 <div class="tarjeta-cuerpo">
-                    <span class="categoria">Multimedia</span>
-                    <h4>Tecnología y Calidad de Radio</h4>
-                    <p>Streaming de video y audio optimizado con sistemas automatizados para ofrecer la mejor experiencia sin interrupciones.</p>
-                </div>
-            </article>
-
-            <article class="tarjeta-nota">
-                <div class="tarjeta-img">🚀 LALIGA</div>
-                <div class="tarjeta-cuerpo">
-                    <span class="categoria">Deportes</span>
-                    <h4>Pasión por el Deporte Local</h4>
-                    <p>Seguimiento minuto a minuto, análisis técnico, entrevistas exclusivas y todo el color de las competencias regionales.</p>
+                    <span class="categoria">Producción</span>
+                    <h4>Señal Digital de Alta Calidad</h4>
+                    <p>Streaming de video y audio optimizado las 24 horas para garantizarte la mejor experiencia sin cortes ni baches.</p>
                 </div>
             </article>
         </div>
     </section>
 
     <footer>
+        <div class="bloque-redes">
+            <a href="https://www.tiktok.com/@tafiyorkradionline?is_from_webapp=1&sender_device=pc" target="_blank" class="btn-red tiktok">🎵 TikTok</a>
+            <a href="https://www.instagram.com/tafiyork/" target="_blank" class="btn-red instagram">📸 Instagram</a>
+            <a href="https://www.facebook.com/p/Tafi-york-radio-online-100070959795353/" target="_blank" class="btn-red facebook">👥 Facebook Radio</a>
+            <a href="https://www.facebook.com/tafiyork360" target="_blank" class="btn-red facebook">🎥 Facebook 360</a>
+        </div>
         <p>&copy; 2026 TAFIYORK STREAM. Todos los derechos reservados.</p>
         <p>Transmitiendo con máxima potencia desde Tafí Viejo, Tucumán, Argentina.</p>
     </footer>
@@ -249,13 +300,13 @@
             if (audio.paused) {
                 // audio.play(); // Descomentar al colocar la URL real de streaming
                 btn.innerText = "⏸";
-                btn.style.paddingLeft = "0px"; /* Centra el icono de pausa */
+                btn.style.paddingLeft = "0px";
                 btn.style.background = "#ff0055";
                 btn.style.boxShadow = "0 0 15px #ff0055";
             } else {
                 audio.pause();
                 btn.innerText = "▶";
-                btn.style.paddingLeft = "5px"; /* Ajuste para el triángulo de play */
+                btn.style.paddingLeft = "5px";
                 btn.style.background = "#00ffcc";
                 btn.style.boxShadow = "0 0 15px #00ffcc";
             }
