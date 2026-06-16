@@ -148,7 +148,7 @@
         .stat-card h3 { font-size: 3.2rem; color: var(--neon-cyan); font-weight: 800; }
         .stat-card p { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; }
 
-        /* --- ESTUDIO (SLIDER REAL) --- */
+        /* --- ESTUDIO --- */
         .studio-container { display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; align-items: center; }
         
         .studio-slider-box {
@@ -182,7 +182,7 @@
         .studio-text ul li { margin-bottom: 12px; color: #e1e1e6; }
         .studio-text ul li i { color: var(--neon-yellow); margin-right: 10px; }
 
-        /* --- GALERÍA REAL --- */
+        /* --- GALERÍA --- */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
         .gallery-card {
             background-color: var(--bg-card);
@@ -196,7 +196,7 @@
         .gallery-card-body { padding: 15px; }
         .gallery-card-body h4 { font-size: 1.1rem; color: #fff; }
 
-        /* --- SPONSORS REALES --- */
+        /* --- SPONSORS --- */
         .sponsors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 25px; justify-content: center; }
         .sponsor-card {
             background-color: var(--bg-card);
@@ -216,9 +216,9 @@
         /* --- CONTACTO --- */
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; background-color: var(--bg-card); padding: 45px; border-radius: 8px; }
         .contact-info h3 { font-size: 2rem; margin-bottom: 25px; }
-        .contact-info p { margin-bottom: 18px; color: var(--text-muted); }
+        .contact-info p { margin-bottom: 18px; color: var(--text-muted); line-height: 1.6; }
         .contact-info i { margin-right: 12px; width: 20px; text-align: center; }
-        .map-wrapper { background-color: #16161a; border-radius: 6px; min-height: 280px; overflow: hidden; }
+        .map-wrapper { background-color: #16161a; border-radius: 6px; min-height: 280px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.03); }
         .map-wrapper iframe { width: 100%; height: 100%; border: none; }
 
         /* --- FOOTER --- */
@@ -310,7 +310,7 @@
         <div class="studio-container">
             <div class="studio-slider-box">
                 <button class="slider-btn prev" onclick="cambiarFoto(-1)">❮</button>
-                <img id="foto-estudio" src="assets/estudio/estudio1.jpeg" alt="Estudio Tafiyork Stream">
+                <img id="foto-estudio" src="assets/estudio1.jpeg" alt="Estudio Tafiyork Stream">
                 <button class="slider-btn next" onclick="cambiarFoto(1)">❯</button>
             </div>
             <div class="studio-text">
@@ -330,7 +330,7 @@
         <h2 class="section-title">GALERÍA</h2>
         <div class="gallery-grid">
             <div class="gallery-card">
-                <img src="assets/programas/logo1.jpg" alt="Transmisiones Oficiales">
+                <img src="assets/logo1.jpg" alt="Transmisiones Oficiales">
                 <div class="gallery-card-body">
                     <h4>Nuestras Transmisiones Oficiales</h4>
                 </div>
@@ -357,12 +357,12 @@
         <div class="contact-grid">
             <div class="contact-info">
                 <h3>TAFIYORK STREAM</h3>
-                <p><i class="fas fa-map-marker-alt" style="color: var(--neon-yellow);"></i> Tafí Viejo, Tucumán, Argentina</p>
+                <p><i class="fas fa-map-marker-alt" style="color: var(--neon-yellow);"></i> Pasaje Güemes 199 (Casi esq. Bolívar), Tafí Viejo, Tucumán</p>
                 <p><i class="fab fa-whatsapp" style="color: #25d366;"></i> 381 333-8325</p>
                 <p><i class="fas fa-envelope" style="color: var(--neon-cyan);"></i> contacto@tafiyorkstream.com</p>
             </div>
             <div class="map-wrapper">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d14251.48842698668!2d-65.26760595!3d-26.73255155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94225c50b69179d1%3A0x6bba847c234a413d!2sTaf%C3%AD%20Viejo%2C%20Tucum%C3%A1n!5e0!3m2!1ses-419!2sar!4v1718570000000!5m2!1ses-419!2sar"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.8509425482613!2d-65.26188200000001!3d-26.717192999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94225c56b713bf4b%3A0xe1084ef75797825d!2sPje.%20G%C3%BCemes%20199%2C%20Taf%C3%AD%20Viejo%2C%20Tucum%C3%A1n!5e0!3m2!1ses-419!2sar!4v1718571000000!5m2!1ses-419!2sar" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
@@ -381,7 +381,6 @@
     </footer>
 
     <script>
-        // Lógica interactiva para el carrusel de fotos del estudio (1 al 8)
         let fotoActual = 1;
         const totalFotos = 8;
 
@@ -390,7 +389,7 @@
             if (fotoActual > totalFotos) fotoActual = 1;
             if (fotoActual < 1) fotoActual = totalFotos;
             
-            document.getElementById('foto-estudio').src = `assets/estudio/estudio${fotoActual}.jpeg`;
+            document.getElementById('foto-estudio').src = `assets/estudio${fotoActual}.jpeg`;
         }
     </script>
 </body>
