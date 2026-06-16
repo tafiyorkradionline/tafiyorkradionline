@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOX360TUC - Multimedia & Streaming</title>
+    <title>TAFIYORK STREAM - Multimedia & Transmisiones</title>
     <style>
         /* --- ESTILOS GENERALES (Estética Premium Dark) --- */
         body {
@@ -32,6 +32,7 @@
             font-weight: bold;
             color: #00ffcc;
             text-shadow: 0 0 10px #00ffcc;
+            letter-spacing: 1px;
         }
 
         .logo span { color: #ff0055; text-shadow: 0 0 10px #ff0055; }
@@ -78,28 +79,34 @@
         }
 
         .info-programa { margin-bottom: 25px; }
-        .info-programa h2 { font-size: 2rem; margin: 5px 0; color: #fff; }
-        .info-programa p { color: #00ffcc; font-size: 1.1rem; margin: 0; }
+        .info-programa h2 { font-size: 2.2rem; margin: 5px 0; color: #fff; }
+        .info-programa p { color: #00ffcc; font-size: 1.1rem; margin: 0; letter-spacing: 2px; }
 
-        /* Botón de Play de Streaming (Adaptable a tu IP de Radio o Video) */
+        /* Botón de Play de Streaming (Adaptable a IP de Radio o Video) */
         .btn-play {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             background: #00ffcc;
             color: #111;
-            width: 70px;
-            height: 70px;
+            width: 75px;
+            height: 75px;
             border-radius: 50%;
-            font-size: 1.8rem;
+            font-size: 2rem;
             cursor: pointer;
             box-shadow: 0 0 15px #00ffcc;
             transition: 0.3s;
             border: none;
+            padding-left: 5px; /* Ajuste para centrar visualmente el triángulo de Play */
         }
-        .btn-play:hover { transform: scale(1.1); background: #ff0055; color: #fff; box-shadow: 0 0 15px #ff0055; }
+        .btn-play:hover { 
+            transform: scale(1.1); 
+            background: #ff0055; 
+            color: #fff; 
+            box-shadow: 0 0 15px #ff0055;
+        }
 
-        /* --- SECCIÓN MAGAZINE (Grilla estilo Revista Multimedia) --- */
+        /* --- SECCIÓN MAGAZINE / CONTENIDO --- */
         .seccion-magazine {
             max-width: 1000px;
             margin: 50px auto;
@@ -137,12 +144,13 @@
         .tarjeta-img {
             width: 100%;
             height: 180px;
-            background: #252525; /* Espacio para imagen de portada */
+            background: #252525;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #444;
+            color: #666;
             font-weight: bold;
+            font-size: 1.1rem;
         }
 
         .tarjeta-cuerpo { padding: 20px; text-align: left; }
@@ -158,6 +166,7 @@
             border-top: 1px solid #222;
             font-size: 0.9rem;
             color: #666;
+            text-align: center;
         }
 
         /* --- ANIMACIONES --- */
@@ -171,11 +180,11 @@
 <body>
 
     <header>
-        <div class="logo">BOX360<span>TUC</span></div>
+        <div class="logo">TAFIYORK<span>STREAM</span></div>
         <nav>
             <a href="#">Inicio</a>
-            <a href="#">Programación</a>
-            <a href="#">Magazine</a>
+            <a href="#">Transmisiones</a>
+            <a href="#">Programas</a>
             <a href="#">Contacto</a>
         </nav>
     </header>
@@ -183,68 +192,70 @@
     <main class="seccion-stream">
         <div class="reproductor-box">
             <div class="info-programa">
-                <p>ESTÁS ESCUCHANDO</p>
+                <p>SEÑAL ONLINE</p>
                 <h2>Transmisión Oficial En Vivo</h2>
             </div>
             
             <button class="btn-play" id="playBtn" onclick="controlarStream()">▶</button>
             
+            <!-- Colocá tu IP o URL de streaming de audio/video en el src -->
             <audio id="audioStream" src="TU_URL_DE_STREAMING_AQUÍ"></audio>
         </div>
     </main>
 
     <section class="seccion-magazine">
-        <h3>Últimas Novedades</h3>
+        <h3>Contenido Destacado</h3>
         
         <div class="grid-magazine">
             <article class="tarjeta-nota">
-                <div class="tarjeta-img">📸 BOX360TUC COVER</div>
+                <div class="tarjeta-img">📺 EN VIVO</div>
                 <div class="tarjeta-cuerpo">
                     <span class="categoria">Streaming</span>
-                    <h4>Lunes de Cesto al Palo: Todo el análisis del Cestoball</h4>
-                    <p>Reviví el programa completo con las mejores jugadas, entrevistas exclusivas y la cobertura técnica del torneo regional.</p>
+                    <h4>Cobertura de Eventos Locales</h4>
+                    <p>Reviví las transmisiones en alta definición de los eventos culturales, deportivos y sociales más importantes de la región.</p>
                 </div>
             </article>
 
             <article class="tarjeta-nota">
-                <div class="tarjeta-img">✨ RELAX DESIGN</div>
+                <div class="tarjeta-img">🎙️ PRODUCCIÓN</div>
                 <div class="tarjeta-cuerpo">
-                    <span class="categoria">Bienestar</span>
-                    <h4>Tu Sitio Relax incorpora equipamiento de última generación</h4>
-                    <p>Conocé los nuevos tratamientos estéticos con tecnología Body Up y camillas Ceragem ya disponibles en Tafí Viejo.</p>
+                    <span class="categoria">Multimedia</span>
+                    <h4>Tecnología y Calidad de Radio</h4>
+                    <p>Streaming de video y audio optimizado con sistemas automatizados para ofrecer la mejor experiencia sin interrupciones.</p>
                 </div>
             </article>
 
             <article class="tarjeta-nota">
-                <div class="tarjeta-img">📻 AUTOMATIZACIÓN</div>
+                <div class="tarjeta-img">🚀 LALIGA</div>
                 <div class="tarjeta-cuerpo">
-                    <span class="categoria">Radio</span>
-                    <h4>Nueva programación musical y spots publicitarios</h4>
-                    <p>Implementamos un sistema de rotación inteligente mediante RadioBOSS para garantizar la mejor música sin baches comerciales.</p>
+                    <span class="categoria">Deportes</span>
+                    <h4>Pasión por el Deporte Local</h4>
+                    <p>Seguimiento minuto a minuto, análisis técnico, entrevistas exclusivas y todo el color de las competencias regionales.</p>
                 </div>
             </article>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 BOX360TUC & TU SITIO RELAX. Todos los derechos reservados.</p>
-        <p>Desarrollado con pasión en Tafí Viejo, Tucumán, Argentina.</p>
+        <p>&copy; 2026 TAFIYORK STREAM. Todos los derechos reservados.</p>
+        <p>Transmitiendo con máxima potencia desde Tafí Viejo, Tucumán, Argentina.</p>
     </footer>
 
     <script>
-        // Script básico para controlar el encendido/apagado del stream de audio
         function controlarStream() {
             const audio = document.getElementById('audioStream');
             const btn = document.getElementById('playBtn');
             
             if (audio.paused) {
-                // audio.play(); // Descomentar cuando pongas tu URL real
+                // audio.play(); // Descomentar al colocar la URL real de streaming
                 btn.innerText = "⏸";
+                btn.style.paddingLeft = "0px"; /* Centra el icono de pausa */
                 btn.style.background = "#ff0055";
                 btn.style.boxShadow = "0 0 15px #ff0055";
             } else {
                 audio.pause();
                 btn.innerText = "▶";
+                btn.style.paddingLeft = "5px"; /* Ajuste para el triángulo de play */
                 btn.style.background = "#00ffcc";
                 btn.style.boxShadow = "0 0 15px #00ffcc";
             }
