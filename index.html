@@ -7,7 +7,7 @@
     <title>TAFIYORK STREAM - Radio Online & Contenido Digital</title>
     <meta name="description" content="Radio Online, Streaming, Podcast y Producción Audiovisual con máxima potencia desde Tafí Viejo, Tucumán.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
@@ -112,13 +112,13 @@
         .hero-content p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 35px; }
 
         .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .btn-custom { padding: 14px 35px; font-weight: 600; border-radius: 6px; font-size: 0.95rem; cursor: pointer; border: none; }
+        .btn-custom { padding: 14px 35px; font-weight: 600; border-radius: 6px; font-size: 0.95rem; cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 10px; }
         .btn-yellow { background-color: var(--neon-yellow); color: #000; box-shadow: 0 4px 15px rgba(230, 195, 0, 0.3); }
         .btn-yellow:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(230, 195, 0, 0.5); }
         .btn-border { background-color: transparent; color: var(--text-main); border: 2px solid rgba(255, 255, 255, 0.1); }
         .btn-border:hover { border-color: var(--neon-cyan); color: var(--neon-cyan); transform: translateY(-2px); }
 
-        /* --- SECCIONES --- */
+        /* --- SECCIONES GENERALES --- */
         section { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
         .section-title { font-size: 2.2rem; font-weight: 800; text-align: center; margin-bottom: 60px; text-transform: uppercase; }
         .section-title span { color: var(--neon-yellow); }
@@ -136,7 +136,120 @@
 
         .player-container { background-color: #000; aspect-ratio: 16/9; border-radius: 6px; overflow: hidden; border: 1px solid rgba(0, 243, 255, 0.2); }
         .player-container iframe { width: 100%; height: 100%; border: none; }
-        .live-badge { background-color: var(--live-red); color: white; padding: 6px 14px; font-size: 0.75rem; font-weight: 700; border-radius: 4px; width: fit-content; margin-bottom: 20px; }
+        .live-badge { background-color: var(--live-red); color: white; padding: 6px 14px; font-size: 0.75rem; font-weight: 700; border-radius: 4px; width: fit-content; margin-bottom: 20px; display: inline-flex; align-items: center; gap: 8px; animation: pulse 2s infinite; }
         .live-info h3 { font-size: 2rem; margin-bottom: 12px; }
         .live-info p { color: var(--text-muted); margin-bottom: 30px; line-height: 1.6; }
-        .platforms span { background-color: #1c1c24; padding: 6px 1
+        
+        .platforms { display: flex; gap: 10px; flex-wrap: wrap; }
+        .platforms span { background-color: #1c1c24; padding: 8px 15px; border-radius: 4px; font-size: 0.85rem; font-weight: 500; border: 1px solid rgba(255, 255, 255, 0.05); color: var(--text-main); }
+        .platforms span i { margin-right: 5px; color: var(--neon-cyan); }
+
+        /* --- GRILLA / PROGRAMACIÓN --- */
+        .grilla-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .show-card { background-color: var(--bg-card); border-radius: 8px; padding: 25px; border-left: 4px solid var(--neon-yellow); transition: all 0.3s ease; }
+        .show-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); border-left-color: var(--neon-cyan); }
+        .show-time { color: var(--neon-cyan); font-weight: 700; font-size: 0.9rem; margin-bottom: 8px; text-transform: uppercase; }
+        .show-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; }
+        .show-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
+
+        /* --- FOOTER --- */
+        footer { background-color: #040405; border-top: 1px solid rgba(255,255,255,0.05); padding: 40px 20px; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
+        footer p span { color: var(--neon-yellow); }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .live-container { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .nav-links { display: none; } /* En desarrollo menú hamburguesa mobile */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABECERA -->
+    <header>
+        <div class="navbar">
+            <div class="logo-text">TAFIYORK<span>STREAM</span></div>
+            <nav class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#vivo">En Vivo</a>
+                <a href="#programacion">Programación</a>
+            </nav>
+            <div class="social-mini">
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h2>Multimedia & Streaming Profesional</h2>
+            <h1>Plataforma <span class="yellow">Digital</span> desde <span class="cyan">Tafí Viejo</span></h1>
+            <p>Transmitiendo contenidos locales de noticias, interés general y cultura con máxima potencia audiovisual.</p>
+            <div class="hero-buttons">
+                <a href="#vivo" class="btn-custom btn-yellow"><i class="fas fa-play"></i> Escuchar en Vivo</a>
+                <a href="#programacion" class="btn-custom btn-border">Ver Grilla</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- EN VIVO SECTION -->
+    <section id="vivo">
+        <h2 class="section-title">Señal <span>en Vivo</span></h2>
+        <div class="live-container">
+            <div class="player-container">
+                <!-- ACA REEMPLAZAR EL SRC CON EL LINK DEL STREAM REAL -->
+                <iframe src="https://www.youtube.com/embed/live_stream?channel=TU_ID_DE_CANAL" allowfullscreen></iframe>
+            </div>
+            <div class="live-info">
+                <div class="live-badge"><i class="fas fa-circle"></i> ON AIR</div>
+                <h3>Estás conectado a Tafiyork Stream</h3>
+                <p>Disfrutá de nuestra programación diaria con calidad de audio y video digital optimizada para todos tus dispositivos.</p>
+                <div class="platforms">
+                    <span><i class="fas fa-wifi"></i> Radio BOSS Player</span>
+                    <span><i class="fab fa-youtube"></i> YouTube Live</span>
+                    <span><i class="fas fa-mobile-alt"></i> Mobile Ready</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAMACION SECTION -->
+    <section id="programacion">
+        <h2 class="section-title">Nuestra <span>Programación</span></h2>
+        <div class="grilla-grid">
+            <div class="show-card">
+                <div class="show-time">Lunes a Viernes — 09:00 a 12:00</div>
+                <div class="show-title">El Diario Noticias</div>
+                <div class="show-desc">Toda la actualidad, información local y entrevistas exclusivas de la región.</div>
+            </div>
+            <div class="show-card">
+                <div class="show-time">Lunes, Miércoles y Viernes — 19:00</div>
+                <div class="show-title">Cesto al Palo</div>
+                <div class="show-desc">Deporte, cultura y debate con un toque dinámico e interactivo.</div>
+            </div>
+            <div class="show-card">
+                <div class="show-time">Fin de Semana — Especiales</div>
+                <div class="show-title">Tafiyork Mix</div>
+                <div class="show-desc">La mejor selección musical y resúmenes de contenido multimedia de la semana.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 <span>Tafiyork Stream</span>. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
