@@ -505,17 +505,22 @@
                         var btn = document.getElementById('custom-play-btn');
 
                         if (audio.paused) {
-                            audio.load(); 
-                            audio.play().then(() => {
-                                icon.className = "fas fa-pause";
-                                text.innerText = "PAUSAR RADIO";
-                                btn.style.background = "var(--neon-cyan)";
-                                btn.style.boxShadow = "0 4px 15px rgba(0, 243, 255, 0.4)";
-                            }).catch(err => {
-                                alert("Por favor, vuelve a presionar para reproducir.");
-                            });
+                            audio.src = "https://tafiyorkrstream.com.ar/listen/tafiyork_radio_online/radio";
+                            audio.load();
+                            
+                            setTimeout(function() {
+                                audio.play().then(() => {
+                                    icon.className = "fas fa-pause";
+                                    text.innerText = "PAUSAR RADIO";
+                                    btn.style.background = "var(--neon-cyan)";
+                                    btn.style.boxShadow = "0 4px 15px rgba(0, 243, 255, 0.4)";
+                                }).catch(err => {
+                                    console.log("Error de reproduccion:", err);
+                                });
+                            }, 100);
                         } else {
                             audio.pause();
+                            audio.src = ""; 
                             icon.className = "fas fa-play";
                             text.innerText = "ESCUCHAR RADIO";
                             btn.style.background = "var(--neon-yellow)";
