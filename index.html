@@ -486,15 +486,44 @@
             </div>
             <div class="live-info">
                 <div class="live-badge"><i class="fas fa-circle"></i> EN DIRECTO</div>
-                <div class="audio-player-box">
-                    <p><i class="fas fa-radio"></i> Escuchar Señal de Audio</p>
-                    <audio controls preload="none">
-                        <source src="https://tafiyorkrstream.com.ar/listen/tafiyork_radio_online/radio.mp3" type="audio/mpeg">
-                        Tu navegador no soporta el reproductor de audio.
-                    </audio>
-                </div>
-                    </audio>
-                </div>
+                <div class="audio-player-box" style="background: #111114; border: 2px solid var(--neon-yellow); padding: 25px; border-radius: 12px; text-align: center; box-shadow: 0 4px 20px rgba(230, 195, 0, 0.15); margin-bottom: 25px;">
+                <p style="font-size: 1rem; color: #fff; margin-bottom: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-radio" style="color: var(--neon-yellow); margin-right: 8px;"></i> SEÑAL DE AUDIO EN VIVO</p>
+                
+                <button id="custom-play-btn" onclick="toggleRadio()" style="background: var(--neon-yellow); color: #000; border: none; padding: 12px 30px; font-size: 1.1rem; font-weight: 700; border-radius: 30px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(230, 195, 0, 0.3); transition: all 0.3s ease;">
+                    <i id="play-icon" class="fas fa-play"></i> <span id="play-text">ESCUCHAR RADIO</span>
+                </button>
+
+                <audio id="radio-audio">
+                    <source src="https://tafiyorkrstream.com.ar/listen/tafiyork_radio_online/radio.mp3" type="audio/mpeg">
+                </audio>
+
+                <script>
+                    function toggleRadio() {
+                        var audio = document.getElementById('radio-audio');
+                        var icon = document.getElementById('play-icon');
+                        var text = document.getElementById('play-text');
+                        var btn = document.getElementById('custom-play-btn');
+
+                        if (audio.paused) {
+                            audio.load(); 
+                            audio.play().then(() => {
+                                icon.className = "fas fa-pause";
+                                text.innerText = "PAUSAR RADIO";
+                                btn.style.background = "var(--neon-cyan)";
+                                btn.style.boxShadow = "0 4px 15px rgba(0, 243, 255, 0.4)";
+                            }).catch(err => {
+                                alert("Por favor, vuelve a presionar para reproducir.");
+                            });
+                        } else {
+                            audio.pause();
+                            icon.className = "fas fa-play";
+                            text.innerText = "ESCUCHAR RADIO";
+                            btn.style.background = "var(--neon-yellow)";
+                            btn.style.boxShadow = "0 4px 15px rgba(230, 195, 0, 0.3)";
+                        }
+                    }
+                </script>
+            </div>
 
                 <div class="platforms">
                     <span><i class="fab fa-youtube" style="color: #ff0000; margin-right: 5px;"></i>YouTube</span>
