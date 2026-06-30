@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TAFIYORK STREAM - Radio Online & Contenido Digital</title>
-    <meta name="description" content="Radio Online, Streaming, Podcast y Producción Audiovisual con máxima potencia desde Tafí Viejo, Tucumán.">
+    <meta name="description" content="Radio Online, Streaming, Podcast y Production Audiovisual con máxima potencia desde Tafí Viejo, Tucumán.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -322,6 +322,7 @@
             font-size: 4rem;
             border: 1px solid rgba(255, 255, 255, 0.02);
         }
+        .studio-placeholder img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; }
         .studio-text h3 { font-size: 1.8rem; margin-bottom: 20px; font-weight: 700; }
         .studio-text p { color: var(--text-muted); margin-bottom: 25px; line-height: 1.7; }
         .studio-text ul li { margin-bottom: 12px; font-weight: 500; color: #e1e1e6; }
@@ -345,6 +346,7 @@
             font-weight: 700;
             transition: all 0.3s ease;
         }
+        .gallery-item-box img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
         .gallery-item-box:hover {
             border-color: var(--neon-yellow);
             color: var(--text-main);
@@ -482,7 +484,8 @@
         <h2 class="section-title"><span>🔴</span> TRANSMISIÓN EN VIVO</h2>
         <div class="live-container">
             <div class="player-container">
-                <iframe id="live-player" src="https://www.youtube.com/embed/live_stream?channel=UCU0GeB8WWZ6QW-T_gnh9e3A" allowfullscreen></iframe>
+                <!-- Parámetros incrustados para forzar bypass de restricciones de reproducción web en vivos de canales -->
+                <iframe id="live-player" src="https://www.youtube.com/embed/live_stream?channel=UCU0GeB8WWZ6QW-T_gnh9e3A&autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
             <div class="live-info">
                 <div class="live-badge"><i class="fas fa-circle"></i> EN DIRECTO</div>
@@ -495,7 +498,7 @@
                     </button>
 
                     <audio id="radio-audio" preload="none">
-                        <source src="https://tafiyorkrstream.com.ar/listen/tafiyork_radio_online/radio.mp3" type="audio/mpeg">
+                        <source src="https://tafiyorkrstream.com.ar/listen/tafiyork_radio_online/radio" type="audio/mpeg">
                     </audio>
 
                     <script>
@@ -506,7 +509,8 @@
                             var btn = document.getElementById('custom-play-btn');
 
                             if (audio.paused) {
-                                audio.src = "https://tafiyorkrstream.com.ar/listen/tafiyork_radio_online/radio.mp3";
+                                // Enlace directo unificado sin extensión para evitar baches de memoria
+                                audio.src = "https://tafiyorkrstream.com.ar/listen/tafiyork_radio_online/radio";
                                 audio.load();
                                 
                                 setTimeout(function() {
@@ -554,7 +558,7 @@
         <h2 class="section-title">NUESTRO ESTUDIO</h2>
         <div class="studio-container">
             <div class="studio-placeholder" style="background: none; border: none; display: flex; align-items: center; justify-content: center;">
-                <img src="logoviejo.png" alt="Logo Histórico Tafiyork" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px;">
+                <img src="logoviejo.png" alt="Logo Histórico Tafiyork">
             </div>
             <div class="studio-text">
                 <h3>Infraestructura de Vanguardia</h3>
@@ -572,14 +576,14 @@
     <section id="galeria">
         <h2 class="section-title">GALERÍA</h2>
         <div class="gallery-grid">
-            <div class="gallery-item-box"><img src="assets/estudio/estudio1.jpeg" alt="Control en Vivo" style="width:100%; height:100%; object-fit:cover; border-radius:8px;"></div>
-            <div class="gallery-item-box"><img src="assets/estudio/estudio2.jpeg" alt="Estudio Tafí York" style="width:100%; height:100%; object-fit:cover; border-radius:8px;"></div>
-            <div class="gallery-item-box"><img src="assets/estudio/estudio3.jpeg" alt="Entrevistas" style="width:100%; height:100%; object-fit:cover; border-radius:8px;"></div>
-            <div class="gallery-item-box"><img src="assets/estudio/estudio4.jpeg" alt="Transmisión Oficial" style="width:100%; height:100%; object-fit:cover; border-radius:8px;"></div>
-            <div class="gallery-item-box"><img src="assets/estudio/estudio5.jpeg" alt="Equipamiento" style="width:100%; height:100%; object-fit:cover; border-radius:8px;"></div>
-            <div class="gallery-item-box"><img src="assets/estudio/estudio6.jpeg" alt="Contenido Digital" style="width:100%; height:100%; object-fit:cover; border-radius:8px;"></div>
-            <div class="gallery-item-box"><img src="assets/estudio/estudio7.jpeg" alt="Producción Multimedia" style="width:100%; height:100%; object-fit:cover; border-radius:8px;"></div>
-            <div class="gallery-item-box"><img src="assets/estudio/estudio8.jpeg" alt="Señal en Vivo" style="width:100%; height:100%; object-fit:cover; border-radius:8px;"></div>
+            <div class="gallery-item-box"><img src="assets/estudio/estudio1.jpeg" alt="Control en Vivo"></div>
+            <div class="gallery-item-box"><img src="assets/estudio/estudio2.jpeg" alt="Estudio Tafí York"></div>
+            <div class="gallery-item-box"><img src="assets/estudio/estudio3.jpeg" alt="Entrevistas"></div>
+            <div class="gallery-item-box"><img src="assets/estudio/estudio4.jpeg" alt="Transmisión Oficial"></div>
+            <div class="gallery-item-box"><img src="assets/estudio/estudio5.jpeg" alt="Equipamiento"></div>
+            <div class="gallery-item-box"><img src="assets/estudio/estudio6.jpeg" alt="Contenido Digital"></div>
+            <div class="gallery-item-box"><img src="assets/estudio/estudio7.jpeg" alt="Producción Multimedia"></div>
+            <div class="gallery-item-box"><img src="assets/estudio/estudio8.jpeg" alt="Señal en Vivo"></div>
         </div>
     </section>
 
