@@ -339,19 +339,73 @@
             transform: scale(1.02);
         }
 
-        .sponsors-grid {
+        /* --- ESTILOS SPONSORS PREMIUM --- */
+        .sponsors-grid-premium {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            width: 100%;
         }
-        .sponsor-node {
+
+        .sponsor-card {
             background-color: var(--bg-card);
-            padding: 30px 20px;
-            text-align: center;
-            border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding: 25px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 140px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sponsor-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--neon-yellow);
+            box-shadow: 0 6px 20px rgba(230, 195, 0, 0.08);
+        }
+
+        .sponsor-logo {
+            max-width: 100%;
+            max-height: 65px;
+            object-fit: contain;
+            filter: grayscale(40%) brightness(0.9);
+            transition: filter 0.3s ease;
+        }
+
+        .sponsor-card:hover .sponsor-logo {
+            filter: grayscale(0%) brightness(1);
+        }
+
+        .sponsor-meta {
+            margin-top: 15px;
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            text-align: center;
+        }
+
+        .sponsor-card:hover .sponsor-meta {
+            color: var(--text-main);
+        }
+
+        .sponsor-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 0.65rem;
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--neon-cyan);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .contact-grid {
@@ -466,7 +520,8 @@
         <h2 class="section-title"><span>🔴</span> TRANSMISIÓN EN VIVO</h2>
         <div class="live-container">
             <div class="player-container">
-                <iframe id="live-player" src="https://www.youtube.com/embed/live_stream?c=UCU0GeB8WWZ6QW-T_gnh9e3A&autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <!-- Integración directa usando el feed de transmisiones en vivo del canal @box360tuc -->
+                <iframe id="live-player" src="https://www.youtube.com/embed?listType=user_uploads&list=box360tuc&autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
             <div class="live-info">
                 <div class="live-badge"><i class="fas fa-circle"></i> EN DIRECTO</div>
@@ -490,7 +545,6 @@
                             var btn = document.getElementById('custom-play-btn');
 
                             if (audio.paused) {
-                                // Apuntamos exactamente al stream local mp3 que nos dio tu panel
                                 audio.src = "https://tafiyorkrstream.com.ar/listen/tafiyork_radio_online/radio.mp3";
                                 audio.load();
                                 
@@ -543,7 +597,7 @@
             </div>
             <div class="studio-text">
                 <h3>Infraestructura de Vanguardia</h3>
-                <p>Contamos con un espacio técnico totalmente acondicionado acústica y visualmente para llevar tus producciones multimedia al siguiente nivel.</p>
+                <p>Contamos con un space técnico totalmente acondicionado acústica y visualmente para llevar tus producciones multimedia al siguiente nivel.</p>
                 <ul>
                     <li><i class="fas fa-check-circle"></i> Streaming de Audio y Video Simultáneo</li>
                     <li><i class="fas fa-check-circle"></i> Automatización Inteligente sin baches (RadioBOSS)</li>
@@ -568,13 +622,38 @@
         </div>
     </section>
 
+    <!-- =================================================================
+         SECCIÓN SPONSORS OPTIMIZADA CON TARJETAS INTERACTIVAS
+         ================================================================= -->
     <section id="sponsors">
-        <h2 class="section-title">SPONSORS</h2>
-        <div class="sponsors-grid">
-            <div class="sponsor-node">Municipalidad de Tafí Viejo</div>
-            <div class="sponsor-node">Comercio Adherido 1</div>
-            <div class="sponsor-node">Comercio Adherido 2</div>
-            <div class="sponsor-node">Sponsor Oficial</div>
+        <h2 class="section-title">NUESTROS <span>SPONSORS</span></h2>
+        <div class="sponsors-grid-premium">
+            
+            <!-- SPONSOR 1: Institucional -->
+            <a href="https://www.tafiviejo.gob.ar/" target="_blank" class="sponsor-card">
+                <span class="sponsor-badge" style="color: var(--neon-yellow); background: rgba(230, 195, 0, 0.1);">OFICIAL</span>
+                <img src="assets/sponsors/municipalidad.png" alt="Municipalidad de Tafí Viejo" class="sponsor-logo" onerror="this.style.display='none';">
+                <div class="sponsor-meta">Municipalidad de Tafí Viejo</div>
+            </a>
+
+            <!-- SPONSOR 2: Tu Sitio Relax -->
+            <a href="https://wa.me/5493813338325" target="_blank" class="sponsor-card">
+                <img src="assets/sponsors/tusitiorelax.png" alt="Tu Sitio Relax" class="sponsor-logo" onerror="this.style.display='none';">
+                <div class="sponsor-meta">Tu Sitio Relax</div>
+            </a>
+
+            <!-- SPONSOR 3: Comercio Adherido -->
+            <div class="sponsor-card">
+                <img src="assets/sponsors/comercio1.png" alt="Comercio Adherido" class="sponsor-logo" onerror="this.style.display='none';">
+                <div class="sponsor-meta">Comercio Adherido 1</div>
+            </div>
+
+            <!-- SPONSOR 4: Sponsor Oficial -->
+            <div class="sponsor-card">
+                <img src="assets/sponsors/comercio2.png" alt="Sponsor Oficial" class="sponsor-logo" onerror="this.style.display='none';">
+                <div class="sponsor-meta">Sponsor Oficial</div>
+            </div>
+
         </div>
     </section>
 
