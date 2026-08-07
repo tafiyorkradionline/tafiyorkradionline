@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TAFIYORK STREAM - Radio Online & Contenido Digital</title>
     <meta name="description" content="Radio Online, Streaming, Podcast y Producción Audiovisual con máxima potencia desde Tafí Viejo, Tucumán.">
+
+    <!-- POLÍTICAS DE SEGURIDAD OPTIMIZADAS PARA GITHUB PAGES -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; media-src 'self' https://tafiyorkrstream.com.ar; frame-src 'self' https://www.youtube.com https://maps.google.com;">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -59,6 +64,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo-text {
@@ -84,6 +90,15 @@
             letter-spacing: 0.5px;
         }
         .nav-links a:hover { color: var(--neon-yellow); }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
 
         .social-mini {
             display: flex;
@@ -473,7 +488,21 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-card);
+                padding: 20px;
+                border-bottom: 1px solid rgba(230, 195, 0, 0.2);
+                gap: 15px;
+            }
+            .nav-links.active { display: flex; }
+            .social-mini { display: none; }
             .live-container, .studio-container, .contact-grid { grid-template-columns: 1fr; }
             .hero-content h1 { font-size: 2.8rem; }
         }
@@ -485,18 +514,19 @@
     <header>
         <nav class="navbar">
             <div class="logo-text">TAFIYORK<span>STREAM</span></div>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#envivo">En Vivo</a></li>
-                <li><a href="#estudio">Estudio</a></li>
-                <li><a href="#galeria">Galería</a></li>
-                <li><a href="#sponsors">Sponsors</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+            <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#inicio" onclick="toggleMenu()">Inicio</a></li>
+                <li><a href="#envivo" onclick="toggleMenu()">En Vivo</a></li>
+                <li><a href="#estudio" onclick="toggleMenu()">Estudio</a></li>
+                <li><a href="#galeria" onclick="toggleMenu()">Galería</a></li>
+                <li><a href="#sponsors" onclick="toggleMenu()">Sponsors</a></li>
+                <li><a href="#contacto" onclick="toggleMenu()">Contacto</a></li>
             </ul>
             <div class="social-mini">
-                <a href="https://www.facebook.com/p/Tafi-york-radio-online-100070959795353/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/tafiyork/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.tiktok.com/@tafiyorkradionline?is_from_webapp=1&sender_device=pc" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/p/Tafi-york-radio-online-100070959795353/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/tafiyork/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@tafiyorkradionline?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
             </div>
         </nav>
     </header>
@@ -520,7 +550,6 @@
         <h2 class="section-title"><span>🔴</span> TRANSMISIÓN EN VIVO</h2>
         <div class="live-container">
             <div class="player-container">
-                <!-- Integración directa usando el feed de transmisiones en vivo del canal @box360tuc -->
                 <iframe id="live-player" src="https://www.youtube.com/embed?listType=user_uploads&list=box360tuc&autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
             <div class="live-info">
@@ -565,6 +594,13 @@
                                 text.innerText = "ESCUCHAR RADIO";
                                 btn.style.background = "var(--neon-yellow)";
                                 btn.style.boxShadow = "0 4px 15px rgba(230, 195, 0, 0.3)";
+                            }
+                        }
+
+                        function toggleMenu() {
+                            var nav = document.getElementById('nav-links');
+                            if (window.innerWidth <= 768) {
+                                nav.classList.toggle('active');
                             }
                         }
                     </script>
@@ -623,27 +659,27 @@
     </section>
 
     <!-- =================================================================
-         SECCIÓN SPONSORS OPTIMIZADA CON TARJETAS INTERACTIVAS
+         SECCIÓN SPONSORS OPTIMIZADA CON TARJETAS INTERACTIVAS Y SEGURIDAD
          ================================================================= -->
     <section id="sponsors">
         <h2 class="section-title">NUESTROS <span>SPONSORS</span></h2>
         <div class="sponsors-grid-premium">
             
             <!-- SPONSOR 1: Institucional -->
-            <a href="https://www.tafiviejo.gob.ar/" target="_blank" class="sponsor-card">
+            <a href="https://www.tafiviejo.gob.ar/" target="_blank" rel="noopener noreferrer" class="sponsor-card">
                 <span class="sponsor-badge" style="color: var(--neon-yellow); background: rgba(230, 195, 0, 0.1);">OFICIAL</span>
                 <img src="assets/sponsors/municipalidad.png" alt="Municipalidad de Tafí Viejo" class="sponsor-logo" onerror="this.style.display='none';">
                 <div class="sponsor-meta">Municipalidad de Tafí Viejo</div>
             </a>
 
             <!-- SPONSOR 2: Tu Sitio Relax -->
-            <a href="https://wa.me/5493813338325" target="_blank" class="sponsor-card">
+            <a href="https://wa.me/5493813338325" target="_blank" rel="noopener noreferrer" class="sponsor-card">
                 <img src="assets/sponsors/tusitiorelax.png" alt="Tu Sitio Relax" class="sponsor-logo" onerror="this.style.display='none';">
                 <div class="sponsor-meta">Tu Sitio Relax</div>
             </a>
 
-            <!-- SPONSOR 3: Alas (Enlazado al sistema de gestión de turnos) -->
-            <a href="https://turnos-turnos.github.io/centro-alas/" target="_blank" class="sponsor-card">
+            <!-- SPONSOR 3: Alas -->
+            <a href="https://turnos-turnos.github.io/centro-alas/" target="_blank" rel="noopener noreferrer" class="sponsor-card">
                 <img src="assets/sponsors/alas.png" alt="Alas" class="sponsor-logo" onerror="this.style.display='none';">
                 <div class="sponsor-meta">Alas</div>
             </a>
@@ -682,11 +718,11 @@
         <h3>TAFIYORK<span>STREAM</span></h3>
         <p class="footer-sub">Radio Online • Podcast • Producción de Contenidos</p>
         <div class="footer-social">
-            <a href="https://www.facebook.com/p/Tafi-york-radio-online-100070959795353/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.facebook.com/tafiyork360" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/tafiyork/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/@tafiyorkradionline?is_from_webapp=1&sender_device=pc" target="_blank"><i class="fab fa-tiktok"></i></a>
-            <a href="https://wa.me/5493813338325" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/p/Tafi-york-radio-online-100070959795353/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.facebook.com/tafiyork360" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/tafiyork/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@tafiyorkradionline?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/5493813338325" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
         </div>
         <p class="copyright">© 2026 TAFIYORK STREAM. Identidad y potencia multimedia desde Tucumán.</p>
     </footer>
