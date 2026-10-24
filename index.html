@@ -16,16 +16,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
-        /* --- IDENTIDAD DE MARCA: TAFIYORK STREAM --- */
+        /* --- IDENTIDAD DE MARCA OFICIAL: TAFIYORK STREAM --- */
         :root {
-            --bg-pure: #070708;
-            --bg-card: #111114;
-            --bg-input: #18181c;
-            --neon-yellow: #e6c300;
+            --bg-pure: #1a4cd6;        /* Azul institucional del logo */
+            --bg-card: #153ab0;        /* Azul un poco más oscuro para tarjetas */
+            --bg-input: #123196;
+            --brand-red: #e62e2e;      /* Rojo característico del logo */
+            --neon-yellow: #ffde59;    /* Amarillo brillante de acento */
             --neon-cyan: #00f3ff;
             --live-red: #ff0044;
             --text-main: #ffffff;
-            --text-muted: #8a8a93;
+            --text-muted: #d0d8ff;
             --font-poppins: 'Poppins', sans-serif;
         }
 
@@ -47,14 +48,14 @@
         ul { list-style: none; }
 
         header {
-            background-color: rgba(7, 7, 8, 0.9);
+            background-color: rgba(26, 76, 214, 0.95);
             backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
             top: 0;
             left: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(230, 195, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .navbar {
@@ -75,7 +76,7 @@
         }
         .logo-text span {
             color: var(--neon-yellow);
-            text-shadow: 0 0 10px rgba(230, 195, 0, 0.4);
+            text-shadow: 0 0 10px rgba(255, 222, 89, 0.4);
         }
 
         .nav-links {
@@ -107,14 +108,14 @@
         }
         .social-mini a { color: var(--text-muted); }
         .social-mini a:hover { 
-            color: var(--neon-cyan); 
+            color: var(--neon-yellow); 
             transform: translateY(-2px); 
         }
 
-        /* --- HERO CON FONDO LIMPIO Y MODERNO (SIN FOTOS GENÉRICAS) --- */
+        /* --- HERO CON EL NUEVO AZUL INSTITUCIONAL --- */
         .hero {
             min-height: 100vh;
-            background: radial-gradient(circle at center, #16161c 0%, var(--bg-pure) 75%);
+            background: radial-gradient(circle at center, #2357ef 0%, var(--bg-pure) 80%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -136,13 +137,13 @@
             margin-bottom: 15px;
             line-height: 1.1;
         }
-        .hero-content h1 .yellow { color: var(--neon-yellow); text-shadow: 0 0 20px rgba(230, 195, 0, 0.3); }
-        .hero-content h1 .cyan { color: var(--neon-cyan); text-shadow: 0 0 20px rgba(0, 243, 255, 0.3); }
+        .hero-content h1 .yellow { color: var(--text-main); text-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
+        .hero-content h1 .cyan { color: var(--neon-yellow); text-shadow: 0 0 20px rgba(255, 222, 89, 0.4); }
 
         .hero-content h2 {
             font-size: 1.3rem;
-            color: var(--text-main);
-            font-weight: 400;
+            color: var(--neon-yellow);
+            font-weight: 600;
             margin-bottom: 20px;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -175,23 +176,24 @@
             gap: 10px;
         }
         .btn-yellow {
-            background-color: var(--neon-yellow);
-            color: #000;
-            box-shadow: 0 4px 15px rgba(230, 195, 0, 0.3);
+            background-color: var(--brand-red);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(230, 46, 46, 0.4);
         }
         .btn-yellow:hover { 
             transform: translateY(-2px); 
-            box-shadow: 0 6px 25px rgba(230, 195, 0, 0.5); 
+            background-color: #ff3838;
+            box-shadow: 0 6px 25px rgba(230, 46, 46, 0.6); 
         }
 
         .btn-border {
             background-color: transparent;
             color: var(--text-main);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
         .btn-border:hover { 
-            border-color: var(--neon-cyan); 
-            color: var(--neon-cyan);
+            border-color: var(--neon-yellow); 
+            color: var(--neon-yellow);
             transform: translateY(-2px); 
         }
 
@@ -208,6 +210,7 @@
             margin-bottom: 60px;
             letter-spacing: 1px;
             text-transform: uppercase;
+            color: #fff;
         }
         .section-title span { color: var(--neon-yellow); }
 
@@ -218,7 +221,8 @@
             background-color: var(--bg-card);
             border-radius: 8px;
             padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .player-container {
@@ -226,7 +230,7 @@
             aspect-ratio: 16/9;
             border-radius: 6px;
             overflow: hidden;
-            border: 1px solid rgba(0, 243, 255, 0.2);
+            border: 1px solid rgba(255, 222, 89, 0.3);
             position: relative;
         }
         .player-container iframe {
@@ -242,7 +246,7 @@
         }
 
         .live-badge {
-            background-color: var(--live-red);
+            background-color: var(--brand-red);
             color: white;
             padding: 6px 14px;
             font-size: 0.75rem;
@@ -261,12 +265,12 @@
         .live-info p { color: var(--text-muted); margin-bottom: 20px; line-height: 1.6; }
 
         .audio-player-box {
-            background: #111114;
+            background: #123196;
             border: 2px solid var(--neon-yellow);
             padding: 20px;
             border-radius: 12px;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(230, 195, 0, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             margin-bottom: 20px;
         }
         .audio-player-box p {
@@ -284,16 +288,16 @@
             flex-wrap: wrap;
         }
         .platforms span {
-            background-color: #1c1c24;
+            background-color: #123196;
             padding: 6px 16px;
             border-radius: 4px;
             font-size: 0.85rem;
             font-weight: 600;
             display: inline-block;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .stats-section { max-width: 100%; background-color: var(--bg-card); }
+        .stats-section { max-width: 100%; background-color: #153ab0; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
         .stats-grid {
             max-width: 1200px;
             margin: 0 auto;
@@ -305,7 +309,7 @@
             text-align: center;
             padding: 20px;
         }
-        .stat-card h3 { font-size: 3.2rem; color: var(--neon-cyan); font-weight: 800; margin-bottom: 5px; }
+        .stat-card h3 { font-size: 3.2rem; color: var(--neon-yellow); font-weight: 800; margin-bottom: 5px; }
         .stat-card p { color: var(--text-muted); font-weight: 600; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; }
 
         .studio-container {
@@ -315,15 +319,13 @@
             align-items: center;
         }
         .studio-placeholder {
-            background: #16161a;
+            background: #153ab0;
             border-radius: 8px;
             aspect-ratio: 16/10;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #333;
-            font-size: 4rem;
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .studio-placeholder img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; }
         .studio-text h3 { font-size: 1.8rem; margin-bottom: 20px; font-weight: 700; }
@@ -340,18 +342,15 @@
             background-color: var(--bg-card);
             aspect-ratio: 1;
             border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #5b5b6e;
-            font-weight: 700;
             transition: all 0.3s ease;
         }
         .gallery-item-box img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
         .gallery-item-box:hover {
             border-color: var(--neon-yellow);
-            color: var(--text-main);
             transform: scale(1.02);
         }
 
@@ -365,7 +364,7 @@
 
         .sponsor-card {
             background-color: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             padding: 25px 20px;
             display: flex;
@@ -381,19 +380,15 @@
         .sponsor-card:hover {
             transform: translateY(-4px);
             border-color: var(--neon-yellow);
-            box-shadow: 0 6px 20px rgba(230, 195, 0, 0.08);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         .sponsor-logo {
             max-width: 100%;
             max-height: 65px;
             object-fit: contain;
-            filter: grayscale(40%) brightness(0.9);
+            filter: brightness(1.1);
             transition: filter 0.3s ease;
-        }
-
-        .sponsor-card:hover .sponsor-logo {
-            filter: grayscale(0%) brightness(1);
         }
 
         .sponsor-meta {
@@ -403,7 +398,6 @@
             color: var(--text-muted);
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            transition: color 0.3s ease;
             text-align: center;
         }
 
@@ -416,12 +410,11 @@
             top: 8px;
             right: 8px;
             font-size: 0.65rem;
-            background: rgba(0, 243, 255, 0.1);
-            color: var(--neon-cyan);
+            background: rgba(230, 46, 46, 0.2);
+            color: #ff8080;
             padding: 2px 6px;
             border-radius: 4px;
             font-weight: 700;
-            letter-spacing: 0.5px;
         }
 
         .contact-grid {
@@ -431,25 +424,25 @@
             background-color: var(--bg-card);
             padding: 45px;
             border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .contact-info h3 { font-size: 2rem; margin-bottom: 25px; font-weight: 700; }
         .contact-info p { margin-bottom: 18px; font-size: 1.05rem; color: var(--text-muted); line-height: 1.6; }
         .contact-info i { margin-right: 12px; width: 20px; text-align: center; }
         .map-wrapper {
-            background-color: #16161a;
+            background-color: #123196;
             border-radius: 6px;
             min-height: 280px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .map-wrapper iframe { width: 100%; height: 100%; border: none; }
 
         footer {
-            background-color: #040405;
+            background-color: #122880;
             padding: 60px 20px 30px 20px;
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         footer h3 { font-size: 2rem; font-weight: 800; margin-bottom: 8px; letter-spacing: 1px; }
         footer h3 span { color: var(--neon-yellow); }
@@ -463,7 +456,7 @@
             font-size: 1.4rem;
         }
         .footer-social a {
-            color: var(--text-muted);
+            color: var(--text-main);
             width: 45px;
             height: 45px;
             background-color: var(--bg-card);
@@ -471,16 +464,15 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .footer-social a:hover { 
             color: #000; 
             background-color: var(--neon-yellow);
-            box-shadow: 0 0 15px rgba(230, 195, 0, 0.4);
             transform: translateY(-3px);
         }
 
-        p.copyright { color: #444; font-size: 0.85rem; font-weight: 500; }
+        p.copyright { color: var(--text-muted); font-size: 0.85rem; font-weight: 500; }
 
         @keyframes pulse {
             0% { opacity: 1; }
@@ -499,7 +491,7 @@
                 width: 100%;
                 background-color: var(--bg-card);
                 padding: 20px;
-                border-bottom: 1px solid rgba(230, 195, 0, 0.2);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 gap: 15px;
             }
             .nav-links.active { display: flex; }
@@ -538,7 +530,7 @@
                 <span class="yellow">TAFIYORK</span>
                 <span class="cyan">STREAM</span>
             </h1>
-            <h2>Radio Online • Podcast • Contenidos Digitales</h2>
+            <h2>RADIO ONLINE • TU RADIO</h2>
             <p>Transmitiendo con máxima potencia y fidelidad desde Tafí Viejo, Tucumán, Argentina.</p>
             <div class="hero-buttons">
                 <a href="#envivo" class="btn-custom btn-yellow"><i class="fas fa-play"></i> TRANSMISIÓN ONLINE</a>
@@ -552,11 +544,11 @@
         <div class="live-container">
             <!-- REPRODUCTOR DE VIDEO CON PLACA INTERACTIVA DE OFFLINE -->
             <div class="player-container" style="position: relative; cursor: pointer;" onclick="ocultarPlacaOffline()" title="Haz clic para ver el directo">
-                <div id="placa-offline" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; background: #111114; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; border: 2px dashed rgba(230, 195, 0, 0.4); transition: opacity 0.3s ease;">
+                <div id="placa-offline" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; background: #153ab0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; border: 2px dashed rgba(255, 222, 89, 0.4); transition: opacity 0.3s ease;">
                     <i class="fas fa-video-slash" style="font-size: 3rem; color: var(--neon-yellow); margin-bottom: 15px;"></i>
                     <h3 style="color: #fff; font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">TAFIYORK STREAM OFFLINE</h3>
                     <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px;">Transmisión de video inactiva en este momento.</p>
-                    <span style="background: var(--neon-yellow); color: #000; padding: 8px 20px; font-size: 0.85rem; font-weight: 700; border-radius: 20px; box-shadow: 0 4px 15px rgba(230, 195, 0, 0.3);">
+                    <span style="background: var(--brand-red); color: #fff; padding: 8px 20px; font-size: 0.85rem; font-weight: 700; border-radius: 20px; box-shadow: 0 4px 15px rgba(230, 46, 46, 0.4);">
                         <i class="fas fa-play" style="margin-right: 5px;"></i> TOCA AQUÍ PARA VER EL VIVO
                     </span>
                 </div>
@@ -570,7 +562,7 @@
                 <div class="audio-player-box">
                     <p><i class="fas fa-radio" style="color: var(--neon-yellow); margin-right: 8px;"></i> SEÑAL DE RADIO ONLINE EN VIVO</p>
                     
-                    <button id="custom-play-btn-1" onclick="toggleRadio1()" style="background: var(--neon-yellow); color: #000; border: none; padding: 12px 25px; font-size: 1rem; font-weight: 700; border-radius: 30px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(230, 195, 0, 0.3); transition: all 0.3s ease;">
+                    <button id="custom-play-btn-1" onclick="toggleRadio1()" style="background: var(--neon-yellow); color: #000; border: none; padding: 12px 25px; font-size: 1rem; font-weight: 700; border-radius: 30px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(255, 222, 89, 0.3); transition: all 0.3s ease;">
                         <i id="play-icon-1" class="fas fa-play"></i> <span id="play-text-1">TAFIYORK VARIOS</span>
                     </button>
 
@@ -581,9 +573,9 @@
 
                 <!-- REPRODUCTOR 2: TAFIYORK CUMBIA -->
                 <div class="audio-player-box">
-                    <p><i class="fas fa-radio" style="color: var(--neon-cyan); margin-right: 8px;"></i> SEÑAL DE RADIO ONLINE EN VIVO</p>
+                    <p><i class="fas fa-radio" style="color: var(--neon-yellow); margin-right: 8px;"></i> SEÑAL DE RADIO ONLINE EN VIVO</p>
                     
-                    <button id="custom-play-btn-2" onclick="toggleRadio2()" style="background: var(--neon-cyan); color: #000; border: none; padding: 12px 25px; font-size: 1rem; font-weight: 700; border-radius: 30px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(0, 243, 255, 0.3); transition: all 0.3s ease;">
+                    <button id="custom-play-btn-2" onclick="toggleRadio2()" style="background: var(--brand-red); color: #fff; border: none; padding: 12px 25px; font-size: 1rem; font-weight: 700; border-radius: 30px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(230, 46, 46, 0.3); transition: all 0.3s ease;">
                         <i id="play-icon-2" class="fas fa-play"></i> <span id="play-text-2">TAFIYORK CUMBIA</span>
                     </button>
 
@@ -615,7 +607,7 @@
                             audio2.src = "";
                             document.getElementById('play-icon-2').className = "fas fa-play";
                             document.getElementById('play-text-2').innerText = "TAFIYORK CUMBIA";
-                            document.getElementById('custom-play-btn-2').style.background = "var(--neon-cyan)";
+                            document.getElementById('custom-play-btn-2').style.background = "var(--brand-red)";
                         }
 
                         if (audio1.paused) {
@@ -626,7 +618,7 @@
                                 audio1.play().then(() => {
                                     icon1.className = "fas fa-pause";
                                     text1.innerText = "PAUSAR VARIOS";
-                                    btn1.style.background = "var(--neon-cyan)";
+                                    btn1.style.background = "var(--brand-red)";
                                 }).catch(err => {
                                     console.log("Error de reproduccion:", err);
                                 });
@@ -673,7 +665,7 @@
                             audio2.src = "";
                             icon2.className = "fas fa-play";
                             text2.innerText = "TAFIYORK CUMBIA";
-                            btn2.style.background = "var(--neon-cyan)";
+                            btn2.style.background = "var(--brand-red)";
                         }
                     }
 
@@ -687,9 +679,9 @@
 
                 <div class="platforms">
                     <span><i class="fab fa-youtube" style="color: #ff0000; margin-right: 5px;"></i>YouTube</span>
-                    <span><i class="fab fa-tiktok" style="color: #00f3ff; margin-right: 5px;"></i>TikTok</span>
-                    <span><i class="fab fa-instagram" style="color: #e1306c; margin-right: 5px;"></i>Instagram</span>
-                    <span><i class="fab fa-facebook" style="color: #1877f2; margin-right: 5px;"></i>Facebook</span>
+                    <span><i class="fab fa-tiktok" style="color: #fff; margin-right: 5px;"></i>TikTok</span>
+                    <span><i class="fab fa-instagram" style="color: #ff80df; margin-right: 5px;"></i>Instagram</span>
+                    <span><i class="fab fa-facebook" style="color: #4da6ff; margin-right: 5px;"></i>Facebook</span>
                 </div>
             </div>
         </div>
@@ -707,12 +699,12 @@
     <section id="estudio">
         <h2 class="section-title">NUESTRO ESTUDIO</h2>
         <div class="studio-container">
-            <div class="studio-placeholder" style="background: none; border: none; display: flex; align-items: center; justify-content: center;">
+            <div class="studio-placeholder">
                 <img src="logoviejo.png" alt="Logo Histórico Tafiyork">
             </div>
             <div class="studio-text">
                 <h3>Infraestructura de Vanguardia</h3>
-                <p>Contamos con un space técnico totalmente acondicionado acústica y visualmente para llevar tus producciones multimedia al siguiente nivel.</p>
+                <p>Contamos con un espacio técnico totalmente acondicionado acústica y visualmente para llevar tus producciones multimedia al siguiente nivel.</p>
                 <ul>
                     <li><i class="fas fa-check-circle"></i> Streaming de Audio y Video Simultáneo</li>
                     <li><i class="fas fa-check-circle"></i> Automatización Inteligente sin baches (RadioBOSS)</li>
@@ -737,13 +729,11 @@
         </div>
     </section>
 
-    <!-- SECCIÓN SPONSORS -->
     <section id="sponsors">
         <h2 class="section-title">NUESTROS <span>SPONSORS</span></h2>
         <div class="sponsors-grid-premium">
-            
             <a href="https://www.tafiviejo.gob.ar/" target="_blank" rel="noopener noreferrer" class="sponsor-card">
-                <span class="sponsor-badge" style="color: var(--neon-yellow); background: rgba(230, 195, 0, 0.1);">OFICIAL</span>
+                <span class="sponsor-badge">OFICIAL</span>
                 <img src="assets/sponsors/municipalidad.png" alt="Municipalidad de Tafí Viejo" class="sponsor-logo" onerror="this.style.display='none';">
                 <div class="sponsor-meta">Municipalidad de Tafí Viejo</div>
             </a>
@@ -753,9 +743,8 @@
                 <div class="sponsor-meta">Tu Sitio Relax</div>
             </a>
 
-            <!-- ESPACIO DISPONIBLE (REEMPLAZO DE ALAS) -->
             <div class="sponsor-card">
-                <i class="fas fa-star" style="font-size: 2rem; color: var(--neon-cyan); margin-bottom: 10px;"></i>
+                <i class="fas fa-star" style="font-size: 2rem; color: var(--neon-yellow); margin-bottom: 10px;"></i>
                 <div class="sponsor-meta">ESPACIO DISPONIBLE</div>
             </div>
 
@@ -768,7 +757,6 @@
                 <img src="assets/sponsors/comercio2.png" alt="Sponsor Oficial" class="sponsor-logo" onerror="this.style.display='none';">
                 <div class="sponsor-meta">Sponsor Oficial</div>
             </div>
-
         </div>
     </section>
 
@@ -779,7 +767,7 @@
                 <h3>TAFIYORK STREAM</h3>
                 <p><i class="fas fa-map-marker-alt" style="color: var(--neon-yellow);"></i> Tafí Viejo, Tucumán, Argentina</p>
                 <p><i class="fab fa-whatsapp" style="color: #25d366;"></i> 381 333-8325</p>
-                <p><i class="fas fa-envelope" style="color: var(--neon-cyan);"></i> contacto@tafiyorkrstream.com.ar</p>
+                <p><i class="fas fa-envelope" style="color: var(--neon-yellow);"></i> contacto@tafiyorkrstream.com.ar</p>
             </div>
             <div class="map-wrapper">
                 <iframe src="https://maps.google.com/maps?q=Tafi%20Viejo%20Tucuman&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
