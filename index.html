@@ -526,7 +526,7 @@
             </ul>
             <div class="social-mini">
                 <a href="https://www.facebook.com/p/Tafi-york-radio-online-100070959795353/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://tafiyorkradionline.github.io/tafiyorkradionline/url?id=7" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.instagram.com/tafiyork/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.tiktok.com/@tafiyorkradionline?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
             </div>
         </nav>
@@ -550,8 +550,8 @@
     <section id="envivo">
         <h2 class="section-title"><span>🔴</span> TRANSMISIÓN EN VIVO</h2>
         <div class="live-container">
-            <!-- PLACA OFFLINE CON DISEÑO INTEGRADO Y BOTÓN DE ACCESO -->
-            <div class="player-container" style="position: relative; cursor: pointer;" onclick="ocultarPlacaOffline()" title="Haz clic para ver el directo si está en emisión">
+            <!-- REPRODUCTOR DE VIDEO CON PLACA INTERACTIVA DE OFFLINE -->
+            <div class="player-container" style="position: relative; cursor: pointer;" onclick="ocultarPlacaOffline()" title="Haz clic para ver el directo">
                 <div id="placa-offline" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; background: #111114; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; border: 2px dashed rgba(230, 195, 0, 0.4); transition: opacity 0.3s ease;">
                     <i class="fas fa-video-slash" style="font-size: 3rem; color: var(--neon-yellow); margin-bottom: 15px;"></i>
                     <h3 style="color: #fff; font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">TAFIYORK STREAM OFFLINE</h3>
@@ -593,7 +593,6 @@
                 </div>
 
                 <script>
-                    // Función para hacer desaparecer la placa offline al hacer clic en ella
                     function ocultarPlacaOffline() {
                         var placa = document.getElementById('placa-offline');
                         if (placa) {
@@ -738,30 +737,38 @@
         </div>
     </section>
 
+    <!-- SECCIÓN SPONSORS -->
     <section id="sponsors">
         <h2 class="section-title">NUESTROS <span>SPONSORS</span></h2>
         <div class="sponsors-grid-premium">
-            <a href="url?id=10" target="_blank" rel="noopener noreferrer" class="sponsor-card">
+            
+            <a href="https://www.tafiviejo.gob.ar/" target="_blank" rel="noopener noreferrer" class="sponsor-card">
                 <span class="sponsor-badge" style="color: var(--neon-yellow); background: rgba(230, 195, 0, 0.1);">OFICIAL</span>
                 <img src="assets/sponsors/municipalidad.png" alt="Municipalidad de Tafí Viejo" class="sponsor-logo" onerror="this.style.display='none';">
                 <div class="sponsor-meta">Municipalidad de Tafí Viejo</div>
             </a>
-            <a href="https://tafiyorkradionline.github.io/tafiyorkradionline/url?id=11" target="_blank" rel="noopener noreferrer" class="sponsor-card">
+
+            <a href="https://wa.me/5493813338325" target="_blank" rel="noopener noreferrer" class="sponsor-card">
                 <img src="assets/sponsors/tusitiorelax.png" alt="Tu Sitio Relax" class="sponsor-logo" onerror="this.style.display='none';">
                 <div class="sponsor-meta">Tu Sitio Relax</div>
             </a>
-            <a href="https://turnos-turnos.github.io/centro-alas/" target="_blank" rel="noopener noreferrer" class="sponsor-card">
-                <img src="assets/sponsors/alas.png" alt="Alas" class="sponsor-logo" onerror="this.style.display='none';">
-                <div class="sponsor-meta">Alas</div>
-            </a>
+
+            <!-- ESPACIO DISPONIBLE (REEMPLAZO DE ALAS) -->
+            <div class="sponsor-card">
+                <i class="fas fa-star" style="font-size: 2rem; color: var(--neon-cyan); margin-bottom: 10px;"></i>
+                <div class="sponsor-meta">ESPACIO DISPONIBLE</div>
+            </div>
+
             <div class="sponsor-card">
                 <img src="assets/sponsors/comercio1.png" alt="Comercio Adherido" class="sponsor-logo" onerror="this.style.display='none';">
                 <div class="sponsor-meta">Comercio Adherido 1</div>
             </div>
+
             <div class="sponsor-card">
                 <img src="assets/sponsors/comercio2.png" alt="Sponsor Oficial" class="sponsor-logo" onerror="this.style.display='none';">
                 <div class="sponsor-meta">Sponsor Oficial</div>
             </div>
+
         </div>
     </section>
 
