@@ -47,21 +47,23 @@
         a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
         ul { list-style: none; }
 
+        /* --- ZÓCALO ROJO SUPERIOR (BARRA DE NAVEGACIÓN) --- */
         header {
-            background-color: rgba(26, 76, 214, 0.95);
+            background-color: var(--brand-red);
             backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
             top: 0;
             left: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .navbar {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 18px 20px;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -85,8 +87,8 @@
         }
 
         .nav-links a {
-            color: var(--text-muted);
-            font-weight: 500;
+            color: #ffe6e6;
+            font-weight: 600;
             font-size: 0.95rem;
             letter-spacing: 0.5px;
         }
@@ -106,13 +108,13 @@
             gap: 15px;
             font-size: 1.1rem;
         }
-        .social-mini a { color: var(--text-muted); }
+        .social-mini a { color: #ffe6e6; }
         .social-mini a:hover { 
             color: var(--neon-yellow); 
             transform: translateY(-2px); 
         }
 
-        /* --- HERO CON EL NUEVO AZUL INSTITUCIONAL --- */
+        /* --- HERO --- */
         .hero {
             min-height: 100vh;
             background: radial-gradient(circle at center, #2357ef 0%, var(--bg-pure) 80%);
@@ -176,14 +178,14 @@
             gap: 10px;
         }
         .btn-yellow {
-            background-color: var(--brand-red);
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(230, 46, 46, 0.4);
+            background-color: var(--neon-yellow);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(255, 222, 89, 0.4);
         }
         .btn-yellow:hover { 
             transform: translateY(-2px); 
-            background-color: #ff3838;
-            box-shadow: 0 6px 25px rgba(230, 46, 46, 0.6); 
+            background-color: #ffea80;
+            box-shadow: 0 6px 25px rgba(255, 222, 89, 0.6); 
         }
 
         .btn-border {
@@ -410,8 +412,8 @@
             top: 8px;
             right: 8px;
             font-size: 0.65rem;
-            background: rgba(230, 46, 46, 0.2);
-            color: #ff8080;
+            background: rgba(230, 46, 46, 0.3);
+            color: #ffb3b3;
             padding: 2px 6px;
             border-radius: 4px;
             font-weight: 700;
@@ -438,15 +440,17 @@
         }
         .map-wrapper iframe { width: 100%; height: 100%; border: none; }
 
+        /* --- ZÓCALO ROJO INFERIOR (FOOTER CON REDES) --- */
         footer {
-            background-color: #122880;
+            background-color: var(--brand-red);
             padding: 60px 20px 30px 20px;
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
         }
-        footer h3 { font-size: 2rem; font-weight: 800; margin-bottom: 8px; letter-spacing: 1px; }
+        footer h3 { font-size: 2rem; font-weight: 800; margin-bottom: 8px; letter-spacing: 1px; color: #fff; }
         footer h3 span { color: var(--neon-yellow); }
-        footer p.footer-sub { color: var(--text-muted); margin-bottom: 30px; font-size: 0.95rem; }
+        footer p.footer-sub { color: #ffe6e6; margin-bottom: 30px; font-size: 0.95rem; }
         
         .footer-social {
             display: flex;
@@ -456,15 +460,16 @@
             font-size: 1.4rem;
         }
         .footer-social a {
-            color: var(--text-main);
+            color: var(--brand-red);
             width: 45px;
             height: 45px;
-            background-color: var(--bg-card);
+            background-color: #ffffff;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
         }
         .footer-social a:hover { 
             color: #000; 
@@ -472,7 +477,7 @@
             transform: translateY(-3px);
         }
 
-        p.copyright { color: var(--text-muted); font-size: 0.85rem; font-weight: 500; }
+        p.copyright { color: #ffe6e6; font-size: 0.85rem; font-weight: 500; }
 
         @keyframes pulse {
             0% { opacity: 1; }
@@ -489,9 +494,9 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background-color: var(--bg-card);
+                background-color: var(--brand-red);
                 padding: 20px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                border-bottom: 2px solid rgba(255, 255, 255, 0.2);
                 gap: 15px;
             }
             .nav-links.active { display: flex; }
@@ -548,7 +553,7 @@
                     <i class="fas fa-video-slash" style="font-size: 3rem; color: var(--neon-yellow); margin-bottom: 15px;"></i>
                     <h3 style="color: #fff; font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">TAFIYORK STREAM OFFLINE</h3>
                     <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px;">Transmisión de video inactiva en este momento.</p>
-                    <span style="background: var(--brand-red); color: #fff; padding: 8px 20px; font-size: 0.85rem; font-weight: 700; border-radius: 20px; box-shadow: 0 4px 15px rgba(230, 46, 46, 0.4);">
+                    <span style="background: var(--neon-yellow); color: #000; padding: 8px 20px; font-size: 0.85rem; font-weight: 700; border-radius: 20px; box-shadow: 0 4px 15px rgba(255, 222, 89, 0.3);">
                         <i class="fas fa-play" style="margin-right: 5px;"></i> TOCA AQUÍ PARA VER EL VIVO
                     </span>
                 </div>
